@@ -1,206 +1,75 @@
-/* =============================================================================
-   HTML5 CSS Reset Minified - Eric Meyer
-   ========================================================================== */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-  margin: 0 !important;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s;
+
 }
 
-body {
-  line-height: 1;
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block;
+/* for toggle behavior */
+#sidebar.active {
+  margin-left: -17rem;
 }
 
-nav ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-  content: none;
-}
-
-a {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-  text-decoration: none;
-}
-
-mark {
-  background-color: #ff9;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-abbr[title], dfn[title] {
-  border-bottom: 1px dotted;
-  cursor: help;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-input, select {
-  vertical-align: middle;
-}
-
-li {
-  list-style: none;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
+#content.active {
+  width: 100%;
   margin: 0;
 }
 
-:root {
-  --font-primary: sans-serif;
-  --font-secondary: serif;
-  /* set base values */
-  --text-base-size: 1em;
-  --text-scale-ratio: 1.2;
-  /* type scale */
-  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
-  --text-sm: calc(1em / var(--text-scale-ratio));
-  --text-md: calc(1em * var(--text-scale-ratio));
-  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-  --text-xxxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
-  /* line-height */
-  --heading-line-height: 1.2;
-  --body-line-height: 1.4;
-}
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
 
-@media (max-width: 1600px) {
-  :root {
-    --text-base-size: 1.25em;
-    --text-scale-ratio: 1.25;
+  #sidebar.active {
+    margin-left: 0;
+  }
+
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
   }
 }
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
 body {
-  font-size: var(--text-base-size);
-  font-family: var(--font-primary);
-  color: var(--color-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.page-content {
+  min-height: 100vh;
+}
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
 }
 
-h1, h2, h3, h4, form legend {
-  color: var(--color-text-heading);
-  margin-bottom: var(--space-xxs);
-  line-height: var(--heading-line-height);
+.text-uppercase {
+  letter-spacing: 0.1em;
 }
 
-/* text size */
-.text--xxxl {
-  font-size: var(--text-xxxl);
-}
-
-h1, .text--xxl {
-  font-size: var(--text-xxl);
-}
-
-h2, .text--xl {
-  font-size: var(--text-xl);
-}
-
-h3, .text--lg {
-  font-size: var(--text-lg);
-}
-
-h4, .text--md {
-  font-size: var(--text-md);
-}
-
-.text--sm, small {
-  font-size: var(--text-sm);
-}
-
-.text--xs {
-  font-size: var(--text-xs);
-}
-
-p {
-  line-height: var(--body-line-height);
-}
-
-a {
-  color: var(--color-link);
-}
-a:visited {
-  color: var(--color-link-visited);
-}
-
-b, strong {
-  font-weight: bold;
-}
-
-.text-container h2, .text-container h3, .text-container h4 {
-  margin-top: var(--space-sm);
-}
-.text-container ul, .text-container ol, .text-container p {
-  margin-bottom: var(--space-md);
-}
-.text-container ul, .text-container ol {
-  list-style-position: outside;
-  padding-left: 24px;
-}
-.text-container ul {
-  list-style-type: disc;
-}
-.text-container ol {
-  list-style-type: decimal;
-}
-.text-container ul li, .text-container ol li {
-  line-height: var(--body-line-height);
-}
-.text-container em {
-  font-style: italic;
-}
-.text-container u {
-  text-decoration: underline;
-}
-
-/* utility classes */
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dupa {
-  background-color: red;
-  color: #ffffff;
+.text-gray {
+  color: #aaa;
 }
 
 /*# sourceMappingURL=main.css.map */
