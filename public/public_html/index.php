@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Library APP</title>
+        <title>Library APP / Home</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./public/css/main.css">
@@ -14,12 +14,22 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     </head>
 <body>
-<!-- Start vertical navbar -->
+<!-- Vertical navbar -->
     <nav class="vertical-nav bg-white" id="sidebar">
         <div class="py-4 px-3 mb-4 bg-light">
             <div class="media d-flex align-items-center"><img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow">
                 <div class="media-body">
-                    <h4 class="m-0">Biblioteka UMK Toruń</h4>
+                    <h4 class="m-0">Biblioteka WSB Toruń</h4>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 px-3 mb-3">
+                    <a href="./public/public_html/login.php"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
+                </div>
+                <div class="col-sc-6 px-3 mb-3">
+                    <a href="#"/><img src="./public/assets/uk_flag.svg" alt="English language"  width="50" /></a>
                 </div>
             </div>
         </div>
@@ -82,12 +92,12 @@
             </li>
         </ul>
     </nav>
-<!-- End vertical navbar -->
+<!-- End Vertical navbar -->
 
 <!-- Page content holder -->
-    <div class="page-content p-5 bg-primary" id="content">
+    <main class="page-content p-5 bg-primary" id="content">
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded shadow-sm px-4 mb-4"><i class="fa fa-bars mr-1"></i><small class="text-uppercase font-weight-bold px-2">Toggle</small></button>
-    </div>
+    </main>
     <script>
     $(function(){
         $('#sidebarCollapse').on('click', function() {

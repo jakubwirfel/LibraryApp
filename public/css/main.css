@@ -45,13 +45,6 @@
     width: calc(100% - 17rem);
   }
 }
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSE
-* ==========================================
-*
-*/
 body {
   min-height: 100vh;
   overflow-x: hidden;
@@ -71,5 +64,3 @@ body {
 .text-gray {
   color: #aaa;
 }
-
-/*# sourceMappingURL=main.css.map */
