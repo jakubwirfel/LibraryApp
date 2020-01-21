@@ -54,7 +54,6 @@ input:focus {
     height: 65px;
     background-color: #d9534f !important;
     padding: 10px 20px 10px 75px;
-
 }
 .lib_name {
     color: white;
@@ -62,4 +61,28 @@ input:focus {
 .logo {
     position: absolute;
     left: 0;
+}
+.errors_box {
+    width: auto;
+    height: 50px;
+    background-color: rgba(0,0,0,0.8) !important;
+    position: absolute;
+    bottom: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    font-weight: bold;
+    padding: 0px 20px;
+    visibility: hidden;
+}
+@media (max-width: 768px) {
+    .lib_container{
+        position: absolute;
+        right: 0;
+        top: -80px;
+        height: 65px;
+        background-color: #d9534f !important;
+        padding: 10px 20px 10px 75px;
+    }
 }

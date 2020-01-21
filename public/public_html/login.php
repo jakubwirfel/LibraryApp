@@ -49,6 +49,9 @@
           </div>
 			  </div>
       </div>
+      <div class="errors_box">
+          <p>consequatur adipisci facere distinctio ratione numquam animi omnis qui quidem ad tenetur officiis!</p>
+      </div>
     </div>
   </main>
 </body>
