@@ -15,7 +15,7 @@ $db_access = [  'host' => 'localhost',
 require('db.inc.php');
 
 //add user class
-require('../classes/user.class.php');
+require('../../src/classes/user.class.php');
 
 //make use of DB with user
 $user = new User($database);
