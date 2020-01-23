@@ -1,3 +1,37 @@
+<?php
+// Include necessary file
+include_once './src/include/start.inc.php';
+
+// Check if user is not logged in
+if (!$user->is_logged_in()) {
+    $user->redirect('login.php');
+}
+
+try {
+    // Define query to select values from the users table
+    $sql = "SELECT * FROM users WHERE user_id=:user_id";
+
+    // Prepare the statement
+    $query = $database -> prepare($sql);
+
+    // Bind the parameters
+    $query->bindParam(':user_id', $_SESSION['user_session']);
+
+    // Execute the query
+    $query->execute();
+
+    // Return row as an array indexed by both column name
+    $returned_row = $query->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    array_push($errors, $e->getMessage());
+}
+
+if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
+    $user->log_out();
+    $user->redirect('login.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -17,7 +51,7 @@
 <!-- Vertical navbar -->
     <nav class="vertical-nav bg-white" id="sidebar">
         <div class="py-4 px-3 mb-4 bg-light">
-            <div class="media d-flex align-items-center"><img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow">
+            <div class="media d-flex align-items-center"><img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="logo" width="65" class="mr-3 rounded-circle img-thumbnail shadow">
                 <div class="media-body">
                     <h4 class="m-0">Biblioteka WSB Toruń</h4>
                 </div>
@@ -26,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 px-3 mb-3">
-                    <a href="./public/public_html/login.php"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
+                    <a href="#"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
                 </div>
                 <div class="col-sc-6 px-3 mb-3">
                     <a href="#"/><img src="./public/assets/uk_flag.svg" alt="English language"  width="50" /></a>

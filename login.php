@@ -1,3 +1,34 @@
+<?php
+// Include necessary file
+require_once('./src/include/start.inc.php');
+
+// Check if user is already logged in
+if ($user->is_logged_in()) {
+    // Redirect logged in user to their home page
+    $user->redirect('index.php');
+}
+
+// Check if log-in form is submitted
+if (isset($_POST['log_in'])) {
+    // Retrieve form input
+    $user_name = trim($_POST['user_name']);
+    $user_password = trim($_POST['user_password']);
+    // Check for empty and invalid inputs
+    if (empty($user_name)) {
+        array_push($errors, "Please enter a valid username");
+    } elseif (empty($user_password)) {
+        array_push($errors, "Please enter a valid password.");
+    } else {
+        // Check if the user may be logged in
+        if ($user->login($user_name, $user_password)) {
+            // Redirect if logged in successfully
+            $user->redirect('index.php');
+        } else {
+            array_push($errors, "Incorrect log-in credentials.");
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -6,7 +37,7 @@
         <title>Library APP / Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="./public/css/login.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
@@ -22,36 +53,40 @@
           <div class="d-flex justify-content-end align-items-center rounded-pill lib_container">
             <img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow logo">
             <h3 class="m-0 lib_name">Biblioteka WSB Toruń</h3>
-				  </div>
+				</div>
         </div>
         <div class="card-body">
-          <form action="index.php">
+          <form action="login.php" method="POST">
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
-              <input type="text" class="form-control" placeholder="username">
+              <input type="text" name="user_name" class="form-control" placeholder="username" required>
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-						  <input type="password" class="form-control" placeholder="password">
-					  </div>
+						<input type="password" name="user_password" class="form-control" placeholder="password" required>
+					</div>
             <div class="form-group">
-						  <input type="submit" value="Login" class="btn float-right login_btn">
-					  </div>
+						<input type="submit" name="log_in" value="Login" class="btn float-right login_btn">
+					</div>
           </form>
         </div>
         <div class="card-footer">
           <div class="d-flex justify-content-center">
             <a href="#" class="pwd_forgot">Forgot your password?</a>
           </div>
-			  </div>
+			</div>
       </div>
+      <?php if (!$errors < 1): ?>
       <div class="errors_box">
-          <p>consequatur adipisci facere distinctio ratione numquam animi omnis qui quidem ad tenetur officiis!</p>
+          <?php foreach ($errors as $error): ?>
+              <p><?= $error ?></p>
+          <?php endforeach ?>
       </div>
+      <?php endif ?>
     </div>
   </main>
 </body>
