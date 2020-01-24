@@ -8,23 +8,29 @@ if ($user->is_logged_in()) {
     $user->redirect('index.php');
 }
 
+if ($user->is_password_change()) {
+    // Redirect logged in user to their home page
+    $user->redirect('login.php');
+}
 // Check if log-in form is submitted
-if (isset($_POST['log_in'])) {
+if (isset($_POST['change_password'])) {
     // Retrieve form input
-    $user_name = trim($_POST['user_name']);
-    $user_password = trim($_POST['user_password']);
+    $new_user_password = trim($_POST['new_user_password']);
+    $new_user_password_repet = trim($_POST['new_user_password_repet']);
     // Check for empty and invalid inputs
-    if (empty($user_name)) {
-        array_push($errors, "Please enter a valid username");
-    } elseif (empty($user_password)) {
-        array_push($errors, "Please enter a valid password.");
+    if (empty($new_user_password)) {
+        array_push($errors, "Please enter a valid new password");
+    } elseif (empty($new_user_password_repet)) {
+        array_push($errors, "Please enter a valid new password.");
     } else {
         // Check if the user may be logged in
-        if ($user->login($user_name, $user_password)) {
-            // Redirect if logged in successfully
-            $user->redirect('index.php');
+        if ($new_user_password == $new_user_password_repet) {
+            $user_hashed_password = password_hash($new_user_password, PASSWORD_DEFAULT);
+            $user -> change_password($user_hashed_password);
+            $user->redirect('login.php');
+            $_SESSION['redirect_from_change'] = 1;
         } else {
-            array_push($errors, "Incorrect log-in credentials.");
+            array_push($errors, "Password are not the same");
         }
     }
 }
@@ -34,7 +40,7 @@ if (isset($_POST['log_in'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Library APP / Login</title>
+        <title>Library APP / Change password</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./public/css/login.css">
@@ -49,28 +55,28 @@ if (isset($_POST['log_in'])) {
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
-          <h3>Sign In</h3>
+          <h3>Change password</h3>
           <div class="d-flex justify-content-end align-items-center rounded-pill lib_container">
             <img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow logo">
             <h3 class="m-0 lib_name">Biblioteka WSB Toruń</h3>
 				</div>
         </div>
         <div class="card-body">
-          <form action="login.php" method="POST">
+          <form action="change_password.php" method="POST">
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input type="text" name="user_name" class="form-control" placeholder="username" required>
+              <input type="password" name="new_user_password" class="form-control" placeholder="New password" required>
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-						<input type="password" name="user_password" class="form-control" placeholder="password" required>
+						<input type="password" name="new_user_password_repet" class="form-control" placeholder="New password" required>
 					</div>
             <div class="form-group">
-						<input type="submit" name="log_in" value="Login" class="btn float-right login_btn">
+						<input type="submit" name="change_password" value="Change" class="btn float-right login_btn">
 					</div>
           </form>
         </div>
@@ -89,12 +95,5 @@ if (isset($_POST['log_in'])) {
       <?php endif ?>
     </div>
   </main>
-  <?php if(isset($_SESSION['redirect_from_change'])): ?>
-    <script>
-      alert("Password has been changed");
-    </script>
-  <?php
-    unset($_SESSION['redirect_from_change']);
-  endif ?>
 </body>
 </html>
