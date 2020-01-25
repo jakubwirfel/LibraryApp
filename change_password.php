@@ -79,11 +79,6 @@ if (isset($_POST['change_password'])) {
 						<input type="submit" name="change_password" value="Change" class="btn float-right login_btn">
 					</div>
           </form>
-        </div>
-        <div class="card-footer">
-          <div class="d-flex justify-content-center">
-            <a href="#" class="pwd_forgot">Forgot your password?</a>
-          </div>
 			</div>
       </div>
       <?php if (!$errors < 1): ?>

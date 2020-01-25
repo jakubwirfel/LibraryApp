@@ -21,7 +21,7 @@ try {
     $query->execute();
 
     // Return row as an array indexed by both column name
-    $returned_row = $query->fetch(PDO::FETCH_ASSOC);
+    $returned = $query->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     array_push($errors, $e->getMessage());
 }
@@ -44,7 +44,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"  rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     </head>
 <body>
@@ -57,7 +57,18 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
                 </div>
             </div>
         </div>
-        <div class="container">
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">User: <span class="text-primary"><?php echo $returned['user_name']?></span></p>
+        <ul class="nav flex-column bg-white mb-3">
+            <li class="nav-item">
+                <a href="?logout=true" class="nav-link text-dark font-italic">
+                    <i class="fa fa-sign-out-alt mr-3 text-primary fa-fw"></i>
+                    Sign out
+                </a>
+            </li>
+        </ul>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Language</p>
+
+        <div class="container lang_container">
             <div class="row">
                 <div class="col-xs-6 px-3 mb-3">
                     <a href="#"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
@@ -91,7 +102,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-image mr-3 text-primary fa-fw"></i>
                     Gallery
                 </a>
             </li>
@@ -102,25 +113,25 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-chart-area mr-3 text-primary fa-fw"></i>
                     Area charts
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-chart-bar mr-3 text-primary fa-fw"></i>
                     Bar charts
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-pie-chart mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-chart-pie mr-3 text-primary fa-fw"></i>
                     Pie charts
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-line-chart mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-chart-line mr-3 text-primary fa-fw"></i>
                     Line charts
                 </a>
             </li>

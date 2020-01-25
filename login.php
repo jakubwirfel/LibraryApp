@@ -74,11 +74,6 @@ if (isset($_POST['log_in'])) {
 					</div>
           </form>
         </div>
-        <div class="card-footer">
-          <div class="d-flex justify-content-center">
-            <a href="#" class="pwd_forgot">Forgot your password?</a>
-          </div>
-			</div>
       </div>
       <?php if (!$errors < 1): ?>
       <div class="errors_box">

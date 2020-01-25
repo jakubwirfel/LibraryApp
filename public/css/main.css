@@ -64,3 +64,13 @@ body {
 .text-gray {
   color: #aaa;
 }
+.nav-item:hover {
+  transition: ease-in-out 0.2s;
+    background-color: rgba(0, 0, 0, 0.1) ;
+}
+.row img:hover {
+  transform: scale(1.2);
+}
+.row img {
+  transition: ease 0.5s;
+}
