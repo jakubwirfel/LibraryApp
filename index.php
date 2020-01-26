@@ -9,7 +9,7 @@ if (!$user->is_logged_in()) {
 
 try {
     // Define query to select values from the users table
-    $sql = "SELECT * FROM users WHERE user_id=:user_id";
+    $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_id=:user_id";
 
     // Prepare the statement
     $query = $database -> prepare($sql);
@@ -107,7 +107,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
                 </a>
             </li>
         </ul>
-
+<?php if (($returned['group'] == 3) && ($returned['permissions'] == "admin = 1")) :?>
         <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
 
         <ul class="nav flex-column bg-white mb-0">
@@ -136,6 +136,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
                 </a>
             </li>
         </ul>
+<?php endif ?>
     </nav>
 <!-- End Vertical navbar -->
 

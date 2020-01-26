@@ -23,7 +23,7 @@ class User {
             if($query->rowCount() > 0) {
                 // Verify password against entered password
                 if(password_verify($user_password, $return['user_password'])) {
-                    if ($return['user_is_new'] == 1) {
+                    if ($return['user_pwd_change'] == 1) {
                         $this -> redirect('change_password.php');
                         $_SESSION['user_password_change'] = $return['user_id'];
                     } else {
@@ -42,10 +42,11 @@ class User {
     }
     public function change_password($user_hashed_password) {
         try {
-            $sql = "UPDATE users SET user_password = :new_user_password , user_is_new = 0 WHERE users.user_id = :user_id";
+            $sql = "UPDATE users SET user_password = :user_new_password , user_pwd_change_date = :change_date, user_pwd_change = 0 WHERE users.user_id = :user_id";
             $query = $this -> db -> prepare($sql);
             $query -> bindParam(":user_id", $_SESSION['user_password_change']);
-            $query -> bindParam(":new_user_password", $user_hashed_password);
+            $query -> bindParam(":user_new_password", $user_hashed_password);
+            $query -> bindParam(":change_date", date("Y-m-d"));
             $query -> execute();
             unset($_SESSION['user_password_change']);
         } catch (PDOException $e) {

@@ -17,11 +17,18 @@ if (isset($_POST['change_password'])) {
     // Retrieve form input
     $new_user_password = trim($_POST['new_user_password']);
     $new_user_password_repet = trim($_POST['new_user_password_repet']);
+    // Validation  variables
+    $uppercase = preg_match('@[A-Z]@', $new_user_password);
+    $lowercase = preg_match('@[a-z]@', $new_user_password);
+    $number    = preg_match('@[0-9]@',  $new_user_password);
+    $specialChars = preg_match('@[^\w]@', $new_user_password);
     // Check for empty and invalid inputs
     if (empty($new_user_password)) {
         array_push($errors, "Please enter a valid new password");
     } elseif (empty($new_user_password_repet)) {
         array_push($errors, "Please enter a valid new password.");
+    } elseif (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($new_user_password) < 8) {
+      array_push($errors, 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.');
     } else {
         // Check if the user may be logged in
         if ($new_user_password == $new_user_password_repet) {
@@ -35,6 +42,7 @@ if (isset($_POST['change_password'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pl">
     <head>
