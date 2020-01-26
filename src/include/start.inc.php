@@ -16,6 +16,6 @@ require('db.inc.php');
 
 //add user class
 require('./src/classes/user.class.php');
-
+require('./src/classes/change_password.class.php');
 //make use of DB with user
 $user = new User($database);

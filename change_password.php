@@ -2,13 +2,15 @@
 // Include necessary file
 require_once('./src/include/start.inc.php');
 
+$user_pwd_change = new ChangePwd($database);
+
 // Check if user is already logged in
 if ($user->is_logged_in()) {
     // Redirect logged in user to their home page
     $user->redirect('index.php');
 }
 
-if ($user->is_password_change()) {
+if ($user_pwd_change->is_password_change()) {
     // Redirect logged in user to their home page
     $user->redirect('login.php');
 }
@@ -33,7 +35,7 @@ if (isset($_POST['change_password'])) {
         // Check if the user may be logged in
         if ($new_user_password == $new_user_password_repet) {
             $user_hashed_password = password_hash($new_user_password, PASSWORD_DEFAULT);
-            $user -> change_password($user_hashed_password);
+            $user_pwd_change -> change_password($user_hashed_password);
             $user->redirect('login.php');
             $_SESSION['redirect_from_change'] = 1;
         } else {
