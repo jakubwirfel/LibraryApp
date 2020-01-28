@@ -14,8 +14,9 @@ $db_access = [  'host' => 'localhost',
 //connect to DB
 require('db.inc.php');
 
-//add user class
+//add classes
 require('./src/classes/user.class.php');
 require('./src/classes/change_password.class.php');
+
 //make use of DB with user
 $user = new User($database);
