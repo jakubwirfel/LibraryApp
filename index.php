@@ -91,13 +91,13 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                    About
+                    Wyszukiwanie
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                    Services
+                    Wypożyczone
                 </a>
             </li>
             <li class="nav-item">
