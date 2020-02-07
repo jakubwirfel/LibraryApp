@@ -74,3 +74,14 @@ body {
 .row img {
   transition: ease 0.5s;
 }
+.badge-notify{
+  background:red;
+  position:relative;
+  border-radius: 50px !important;
+  color: #fff;
+  top: -10px;
+  left: 10px;
+}
+.top-line {
+  border-top: 2px solid #aaa;
+}
