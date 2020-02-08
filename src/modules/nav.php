@@ -44,13 +44,13 @@
                     Pomoc
                 </a>
             </li>
+<?php endif ?>
             <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
                     Kontakt
                 </a>
             </li>
-<?php endif ?>
             <li class="nav-item">
                 <a href="?logout=true" class="nav-link text-dark font-italic">
                     <i class="fa fa-sign-out-alt mr-3 text-primary fa-fw"></i>
@@ -69,9 +69,10 @@
                 </div>
             </div>
         </div>
-
+<?php if (($returned['group'] == 1) && ($returned['permissions'] == "user = 1")) :?>
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
-
+<?php endif ?>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic bg-light">
@@ -79,6 +80,7 @@
                     Strona główna
                 </a>
             </li>
+<?php if (($returned['group'] == 1) && ($returned['permissions'] == "user = 1")) :?>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-search mr-3 text-primary fa-fw"></i>
@@ -97,7 +99,39 @@
                     Wybrane dla Ciebie
                 </a>
             </li>
-
+<?php endif ?>
+<?php if (($returned['group'] == 2) && ($returned['permissions'] == "mod = 1")) :?>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
+                    Zarządzaj wypożyczonymi
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-bookmark mr-3 text-primary fa-fw"></i>
+                    Zarządzaj rezerwacjami
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-paper-plane mr-3 text-primary fa-fw"></i>
+                    Wyślij komunikat
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-book  mr-3 text-primary fa-fw"></i>
+                    Dodaj książkę do zbioru
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-plus-circle mr-3 text-primary fa-fw"></i>
+                    Dodaj post
+                </a>
+            </li>
+<?php endif ?>
         </ul>
 <?php if (($returned['group'] == 3) && ($returned['permissions'] == "admin = 1")) :?>
         <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
