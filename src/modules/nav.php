@@ -127,40 +127,60 @@
             </li>
             <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-user-plus  mr-3 text-primary fa-fw"></i>
+                    Dodaj użytkownika
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-plus-circle mr-3 text-primary fa-fw"></i>
                     Dodaj post
                 </a>
             </li>
 <?php endif ?>
-        </ul>
 <?php if (($returned['group'] == 3) && ($returned['permissions'] == "admin = 1")) :?>
-        <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
-
-        <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
+    <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-chart-area mr-3 text-primary fa-fw"></i>
-                    Area charts
+                    <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
+                    Zarządzaj wypożyczonymi
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-chart-bar mr-3 text-primary fa-fw"></i>
-                    Bar charts
+                    <i class="fa fa-bookmark mr-3 text-primary fa-fw"></i>
+                    Zarządzaj rezerwacjami
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-chart-pie mr-3 text-primary fa-fw"></i>
-                    Pie charts
+                    <i class="fa fa-paper-plane mr-3 text-primary fa-fw"></i>
+                    Wyślij komunikat
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-chart-line mr-3 text-primary fa-fw"></i>
-                    Line charts
+                    <i class="fa fa-book  mr-3 text-primary fa-fw"></i>
+                    Dodaj książkę do zbioru
                 </a>
             </li>
-        </ul>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-user-plus  mr-3 text-primary fa-fw"></i>
+                    Dodaj użytkownika
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-plus-circle mr-3 text-primary fa-fw"></i>
+                    Dodaj post
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-tools mr-3 text-primary fa-fw"></i>
+                    Otwórz Admin Panel
+                </a>
+            </li>
 <?php endif ?>
+        </ul>
     </nav>
