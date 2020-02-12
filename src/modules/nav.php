@@ -1,12 +1,29 @@
 <nav class="vertical-nav bg-white" id="sidebar">
-        <div class="py-4 px-3 mb-4 bg-light">
+<div class="py-4 px-3 mb-4 bg-light">
             <div class="media d-flex align-items-center"><img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="logo" width="65" class="mr-3 rounded-circle img-thumbnail shadow">
                 <div class="media-body">
                     <h4 class="m-0">Biblioteka Główna Toruń</h4>
                 </div>
             </div>
         </div>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Język</p>
+        <div class="container lang_container">
+            <div class="row">
+                <div class="col-xs-6 px-3 mb-3">
+                    <a href="#"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
+                </div>
+                <div class="col-sc-6 px-3 mb-3">
+                    <a href="#"/><img src="./public/assets/uk_flag.svg" alt="English language"  width="50" /></a>
+                </div>
+            </div>
+        </div>
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Użytkownik: <span class="text-primary"><?php echo $returned['user_name']?></span></p>
+<?php
+switch ($returned['group']) {
+    /* -------------------USER MENU-----------------------------*/
+    case 1:
+        if ($returned['permissions'] == "user = 1") {
+?>
         <ul class="nav flex-column bg-white mb-3">
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
@@ -14,7 +31,6 @@
                     Informacje o użytkowniku
                 </a>
             </li>
-<?php if (($returned['group'] == 1) && ($returned['permissions'] == "user = 1")) :?>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fas fa-book-open mr-3 text-primary fa-fw"></i>
@@ -27,7 +43,6 @@
                     Rezerwacje
                 </a>
             </li>
-<?php endif ?>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fas fa-exclamation-circle mr-3 text-primary fa-fw"></i>
@@ -37,14 +52,12 @@
                     <!-- End Notification badge -->
                 </a>
             </li>
-<?php if (($returned['group'] == 1) && ($returned['permissions'] == "user = 1")) :?>
             <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-question-circle mr-3 text-primary fa-fw"></i>
                     Pomoc
                 </a>
             </li>
-<?php endif ?>
             <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
@@ -58,21 +71,7 @@
                 </a>
             </li>
         </ul>
-        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Język</p>
-        <div class="container lang_container">
-            <div class="row">
-                <div class="col-xs-6 px-3 mb-3">
-                    <a href="#"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
-                </div>
-                <div class="col-sc-6 px-3 mb-3">
-                    <a href="#"/><img src="./public/assets/uk_flag.svg" alt="English language"  width="50" /></a>
-                </div>
-            </div>
-        </div>
-<?php if (($returned['group'] == 1) && ($returned['permissions'] == "user = 1")) :?>
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
-<?php endif ?>
-        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic bg-light">
@@ -80,7 +79,6 @@
                     Strona główna
                 </a>
             </li>
-<?php if (($returned['group'] == 1) && ($returned['permissions'] == "user = 1")) :?>
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-search mr-3 text-primary fa-fw"></i>
@@ -99,8 +97,54 @@
                     Wybrane dla Ciebie
                 </a>
             </li>
-<?php endif ?>
-<?php if (($returned['group'] == 2) && ($returned['permissions'] == "mod = 1")) :?>
+        </ul>
+<?php
+        break;
+        } else {
+            array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień");
+            break;
+        }
+/* -------------------MOD MENU-----------------------------*/
+    case 2:
+        if ($returned['permissions'] == "mod = 1") {
+?>
+        <ul class="nav flex-column bg-white mb-3">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fas fa-user mr-3 text-primary fa-fw"></i>
+                    Informacje o użytkowniku
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fas fa-exclamation-circle mr-3 text-primary fa-fw"></i>
+                    Komunikaty
+                    <!-- Notification badge -->
+                    <span class="badge badge-notify">1</span>
+                    <!-- End Notification badge -->
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
+                    Kontakt
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="?logout=true" class="nav-link text-dark font-italic">
+                    <i class="fa fa-sign-out-alt mr-3 text-primary fa-fw"></i>
+                    Wyloguj
+                </a>
+            </li>
+        </ul>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic bg-light">
+                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    Strona główna
+                </a>
+            </li>
             <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
@@ -137,9 +181,56 @@
                     Dodaj post
                 </a>
             </li>
-<?php endif ?>
-<?php if (($returned['group'] == 3) && ($returned['permissions'] == "admin = 1")) :?>
-    <li class="nav-item ">
+        </ul>
+<?php
+        break;
+        } else {
+            array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień");
+            break;
+        }
+/* -------------------ADMIN MENU-----------------------------*/
+    case 3:
+    if ($returned['permissions'] == "admin = 1") {
+?>
+        <ul class="nav flex-column bg-white mb-3">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fas fa-user mr-3 text-primary fa-fw"></i>
+                    Informacje o użytkowniku
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fas fa-exclamation-circle mr-3 text-primary fa-fw"></i>
+                    Komunikaty
+                    <!-- Notification badge -->
+                    <span class="badge badge-notify">1</span>
+                    <!-- End Notification badge -->
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
+                    Kontakt
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="?logout=true" class="nav-link text-dark font-italic">
+                    <i class="fa fa-sign-out-alt mr-3 text-primary fa-fw"></i>
+                    Wyloguj
+                </a>
+            </li>
+        </ul>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-dark font-italic bg-light">
+                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    Strona główna
+                </a>
+            </li>
+            <li class="nav-item ">
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
                     Zarządzaj wypożyczonymi
@@ -155,18 +246,6 @@
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-paper-plane mr-3 text-primary fa-fw"></i>
                     Wyślij komunikat
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-book  mr-3 text-primary fa-fw"></i>
-                    Dodaj książkę do zbioru
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-user-plus  mr-3 text-primary fa-fw"></i>
-                    Dodaj użytkownika
                 </a>
             </li>
             <li class="nav-item ">
@@ -181,6 +260,15 @@
                     Otwórz Admin Panel
                 </a>
             </li>
-<?php endif ?>
         </ul>
-    </nav>
+<?php
+        break;
+        } else {
+            array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień");
+            break;
+        }
+    default:
+    array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień");
+}
+?>
+</nav>

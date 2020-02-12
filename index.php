@@ -55,6 +55,13 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 <!-- Page content holder -->
     <main class="page-content p-5 bg-primary" id="content">
         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded shadow-sm px-4 mb-4"><i class="fa fa-bars mr-1"></i><small class="text-uppercase font-weight-bold px-2">Toggle</small></button>
+        <?php if (!$errors < 1): ?>
+            <div class="errors_box">
+                <?php foreach ($errors as $error): ?>
+                    <p><?= $error ?></p>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
     </main>
     <script>
     $(function(){
