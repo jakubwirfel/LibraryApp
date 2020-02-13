@@ -74,7 +74,7 @@ switch ($returned['group']) {
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic bg-light">
+                <a href="index.php" class="nav-link text-dark font-italic bg-light">
                     <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
                     Strona główna
                 </a>
@@ -140,7 +140,7 @@ switch ($returned['group']) {
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic bg-light">
+                <a href="index.php" class="nav-link text-dark font-italic bg-light">
                     <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
                     Strona główna
                 </a>
@@ -225,7 +225,7 @@ switch ($returned['group']) {
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic bg-light">
+                <a href="index.php" class="nav-link text-dark font-italic bg-light">
                     <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
                     Strona główna
                 </a>
@@ -255,7 +255,7 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?admin_panel" class="nav-link text-dark font-italic">
                     <i class="fa fa-tools mr-3 text-primary fa-fw"></i>
                     Otwórz Admin Panel
                 </a>
@@ -264,11 +264,11 @@ switch ($returned['group']) {
 <?php
         break;
         } else {
-            array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień");
+            array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień do funkcji apliakcji");
             break;
         }
     default:
-    array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień");
+    array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień do funkcji apliakcji");
 }
 ?>
 </nav>

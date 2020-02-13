@@ -51,10 +51,14 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 <!-- Vertical navbar -->
 <?php include_once './src/modules/nav.php';?>
 <!-- End Vertical navbar -->
-
 <!-- Page content holder -->
     <main class="page-content p-5 bg-primary" id="content">
-        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded shadow-sm px-4 mb-4"><i class="fa fa-bars mr-1"></i><small class="text-uppercase font-weight-bold px-2">Toggle</small></button>
+        <?php
+        if(isset($_GET['admin_panel'])) {
+            include_once './src/modules/admin_panel.php';
+        }
+        ?>
+        <!-- Errors box -->
         <?php if (!$errors < 1): ?>
             <div class="errors_box">
                 <?php foreach ($errors as $error): ?>
@@ -62,13 +66,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
                 <?php endforeach ?>
             </div>
         <?php endif ?>
+        <!-- End Errors box -->
     </main>
-    <script>
-    $(function(){
-        $('#sidebarCollapse').on('click', function() {
-            $('#sidebar, #content').toggleClass('active');
-        });
-    });
-    </script>
     </body>
 </html>
