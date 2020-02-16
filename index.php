@@ -52,7 +52,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
 <?php include_once './src/modules/nav.php';?>
 <!-- End Vertical navbar -->
 <!-- Page content holder -->
-    <main class="page-content p-5 bg-primary" id="content">
+    <main class="page-content px-5 bg-primary" id="content">
         <?php
         if(isset($_GET['admin_panel'])) {
             include_once './src/modules/admin_panel.php';
@@ -68,5 +68,31 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <?php endif ?>
         <!-- End Errors box -->
     </main>
-    </body>
+<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
+    <aside class="panel_container" id="panel">
+        <div class="panel_outside_secion py-5" id="panelCollapse">
+            <div class="col-lg h-25 d-flex justify-content-center align-items-start">
+                <i class="fas fa-angle-double-left" id="arrow"></i>
+            </div>
+            <div class="col-lg h-50 d-flex justify-content-center align-items-center tu">
+                <h4 class="rotated">Panel Modyfikacyjny</h4>
+            </div>
+            <div class="col-lg h-25 d-flex justify-content-center align-items-end">
+                <i class="fas fa-angle-double-left" id="arrow"></i>
+            </div>
+        </div>
+    </aside>
+<?php endif ?>
+</body>
+<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
+<script>
+    var arrows = document.querySelectorAll("#arrow");
+    $(function() {
+            $('#panelCollapse').on('click', function() {
+            $('#panel').toggleClass('active');
+            $(arrows).toggleClass('active');
+        });
+    });
+</script>
+<?php endif ?>
 </html>
