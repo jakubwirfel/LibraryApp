@@ -81,14 +81,17 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
                 <i class="fas fa-angle-double-left" id="arrow"></i>
             </div>
         </div>
+        <div class="container panel_content">
+        </div>
     </aside>
 <?php endif ?>
 </body>
 <?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
 <script>
     var arrows = document.querySelectorAll("#arrow");
+    var panel_buttons = document.querySelectorAll("#panelCollapse");
     $(function() {
-            $('#panelCollapse').on('click', function() {
+            $(panel_buttons).on('click', function() {
             $('#panel').toggleClass('active');
             $(arrows).toggleClass('active');
         });
