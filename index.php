@@ -68,23 +68,6 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <?php endif ?>
         <!-- End Errors box -->
     </main>
-<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
-    <aside class="panel_container" id="panel">
-        <div class="panel_outside_secion py-5" id="panelCollapse">
-            <div class="col-lg h-25 d-flex justify-content-center align-items-start">
-                <i class="fas fa-angle-double-left" id="arrow"></i>
-            </div>
-            <div class="col-lg h-50 d-flex justify-content-center align-items-center tu">
-                <h4 class="rotated">Panel Modyfikacyjny</h4>
-            </div>
-            <div class="col-lg h-25 d-flex justify-content-center align-items-end">
-                <i class="fas fa-angle-double-left" id="arrow"></i>
-            </div>
-        </div>
-        <div class="container panel_content">
-        </div>
-    </aside>
-<?php endif ?>
 </body>
 <?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
 <script>

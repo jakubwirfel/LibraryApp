@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-plus m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Dodaj</a>
+                            <a href="#add_user" class="btn btn-primary btn-sm" id="panelCollapse">Dodaj</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-minus m-2 text-primary icon-admin-panel"></i>
@@ -162,3 +162,25 @@
     </div>
 </div>
 </div>
+<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
+    <aside class="panel_container" id="panel">
+        <div class="panel_outside_secion py-5" id="panelCollapse">
+            <div class="col-lg h-25 d-flex justify-content-center align-items-start">
+                <i class="fas fa-angle-double-left" id="arrow"></i>
+            </div>
+            <div class="col-lg h-50 d-flex justify-content-center align-items-center tu">
+                <h4 class="rotated">Panel Modyfikacyjny</h4>
+            </div>
+            <div class="col-lg h-25 d-flex justify-content-center align-items-end">
+                <i class="fas fa-angle-double-left" id="arrow"></i>
+            </div>
+        </div>
+        <div class="container panel_content">
+        <?php
+        if(isset($_GET['add_user'])) {
+            include_once './src/modules/add_user.php';
+        }
+        ?>
+        </div>
+    </aside>
+<?php endif ?>
