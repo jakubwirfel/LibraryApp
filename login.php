@@ -52,7 +52,7 @@ if (isset($_POST['log_in'])) {
           <h3>Sign In</h3>
           <div class="d-flex justify-content-end align-items-center rounded-pill lib_container">
             <img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow logo">
-            <h3 class="m-0 lib_name">Biblioteka WSB Toruń</h3>
+            <h3 class="m-0 lib_name">Biblioteka Główna Toruń</h3>
 				</div>
         </div>
         <div class="card-body">
