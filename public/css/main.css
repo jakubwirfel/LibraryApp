@@ -126,8 +126,12 @@ body {
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
 }
-.test {
-  width: 400px;
-  height: 400px;
-  background-color: aqua;
+input[type=checkbox],
+input[type=radio] {
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  padding: 10px;
 }

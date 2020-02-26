@@ -1,3 +1,4 @@
+<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
 <div class="container-fluid content_container p-5 ">
 <div class="row">
     <div class="col-sm-6">
@@ -162,7 +163,6 @@
     </div>
 </div>
 </div>
-<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
     <aside class="panel_container" id="panel">
         <div class="panel_outside_secion py-5" id="panelCollapse">
             <div class="col-lg h-25 d-flex justify-content-center align-items-start">
