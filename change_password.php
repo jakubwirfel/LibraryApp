@@ -10,16 +10,20 @@ if ($user->is_logged_in()) {
     $user->redirect('index.php');
 }
 
-if ($user_pwd_change->is_password_change()) {
-    // Redirect logged in user to their home page
-    $user->redirect('login.php');
-}
 // Check if log-in form is submitted
 if (isset($_POST['change_password'])) {
     // Retrieve form input
     $new_user_password = trim($_POST['new_user_password']);
     $new_user_password_repet = trim($_POST['new_user_password_repet']);
-    $user_pwd_change-> passwordValidation($new_user_password, $new_user_password_repet);
+    $user_pwd_change -> passwordValidation($new_user_password, $new_user_password_repet);
+    if ($accept_password == 1) {
+      $password_hashed = password_hash($new_user_password, PASSWORD_DEFAULT);
+      $user_pwd_change -> change_password($password_hashed);
+      $user->redirect('login.php');
+      unset($accept_password);
+    } else {
+      array_push($errors, "Password cannot be change");
+    }
 }
 ?>
 

@@ -16,6 +16,7 @@ class ChangePwd extends Validators {
             $query -> bindParam(":user_new_password", $user_hashed_password);
             $query -> bindParam(":change_date", date("Y-m-d"));
             $query -> execute();
+            $_SESSION['redirect_from_change'] = 1;
             unset($_SESSION['user_password_change']);
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());

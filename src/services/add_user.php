@@ -1,5 +1,6 @@
+
 <div id="add_user">
-    <form action="index.php?admin_panel=1" method="POST">
+    <form action="index.php?admin_panel" method="POST">
     <div class="form-group row">
         <label for="inputUsername" class="col-sm-3 col-form-label">Nazwa użytkownika</label>
         <div class="col-sm-9">
@@ -55,7 +56,7 @@
     </fieldset>
     <div class="form-group row">
         <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Utwórz</button>
+        <button type="submit" name="add_user" value="AddUser" class="btn btn-primary">Dodaj użytkownika</button>
         </div>
     </div>
     </form>

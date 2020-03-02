@@ -3,6 +3,7 @@ class Validators {
 
     public function passwordValidation($password, $password_repet) {
         global $errors;
+        global $accept_password;
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
         $number    = preg_match('@[0-9]@',  $password);
@@ -17,10 +18,7 @@ class Validators {
         } else {
             // Check if the user may be logged in
             if ($password== $password_repet) {
-                $password_hashed = password_hash($password, PASSWORD_DEFAULT);
-                $this-> change_password($password_hashed);
-                header("Location: login.php");
-                $_SESSION['redirect_from_change'] = 1;
+                $accept_password = 1;
             } else {
                 array_push($errors, "Password are not the same");
             }
