@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-plus m-2 text-primary icon-admin-panel"></i>
-                            <a href="index.php?admin_panel=1&panel=add_user" class="btn btn-primary btn-sm">Dodaj</a>
+                            <a href="index.php?admin_panel&panel=add_user" class="btn btn-primary btn-sm">Dodaj</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-minus m-2 text-primary icon-admin-panel"></i>

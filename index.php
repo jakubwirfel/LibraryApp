@@ -30,7 +30,6 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
     $user->log_out();
     $user->redirect('login.php');
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -59,13 +58,15 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         }
         ?>
         <!-- Errors box -->
+        <div class="center">
         <?php if (!$errors < 1): ?>
-            <div class="errors_box">
+            <div class="errors_box_default">
                 <?php foreach ($errors as $error): ?>
                     <p><?= $error ?></p>
                 <?php endforeach ?>
             </div>
         <?php endif ?>
+        </div>
         <!-- End Errors box -->
     </main>
 </body>

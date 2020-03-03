@@ -67,6 +67,25 @@ body {
   font-weight: bold;
   padding: 0px 20px;
 }
+.center {
+  width: calc(100% - 17rem);
+  bottom: 5vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.errors_box_default {
+  width: auto;
+  height: 50px;
+  background-color: rgba(0,0,0,0.8) !important;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+  font-weight: bold;
+  padding: 0px 20px;
+}
 .content_container {
   background-color: #fff;
   min-height: 100vh;
