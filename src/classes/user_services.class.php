@@ -1,8 +1,9 @@
 <?php
 include_once 'validators.class.php';
-
 class UserServices extends Validators {
     protected $db;
+
+
     public function __construct($database) {
         $this -> db = $database;
     }
@@ -26,7 +27,10 @@ class UserServices extends Validators {
 
     public function selectAllUsers() {
         try {
-
+            $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id";
+            $query = $this -> db -> prepare($sql);
+            $query -> execute();
+            $row = $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
         }

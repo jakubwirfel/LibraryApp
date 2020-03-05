@@ -1,5 +1,4 @@
 <?php
-
 if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
 ?>
 <div class="container-fluid content_container p-5 ">
