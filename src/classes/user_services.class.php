@@ -3,7 +3,6 @@ include_once 'validators.class.php';
 
 class UserServices extends Validators {
     protected $db;
-
     public function __construct($database) {
         $this -> db = $database;
     }
@@ -20,6 +19,14 @@ class UserServices extends Validators {
             $query -> bindParam(":change_date", $date);
             $query -> bindParam(":group", $group);
             $query -> execute();
+        } catch (PDOException $e) {
+            array_push($errors, $e->getMessage());
+        }
+    }
+
+    public function selectAllUsers() {
+        try {
+
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
         }

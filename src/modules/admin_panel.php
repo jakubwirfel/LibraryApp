@@ -1,4 +1,7 @@
-<?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
+<?php
+
+if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
+?>
 <div class="container-fluid content_container p-5 ">
 <div class="row">
     <div class="col-sm-6">
@@ -193,7 +196,7 @@
                 include_once './src/services/add_user.php';
             }
             if($_GET['panel']=='delete_user') {
-                echo "DZIAŁA";
+                include_once './src/services/delete_user.php';
             }
         }
         ?>

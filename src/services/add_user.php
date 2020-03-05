@@ -1,8 +1,7 @@
 <?php
+$addNewUser = new UserServices($database);
 
 if (isset($_POST['add_user'])) {
-    $addNewUser = new UserServices($database);
-
     $userName = trim($_POST['user_name']);
     $userEmail = trim($_POST['email']);
     $password = trim($_POST['password']);
