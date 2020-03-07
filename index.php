@@ -69,7 +69,26 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         </div>
         <!-- End Errors box -->
     </main>
-</body>
+<script>
+    var menuToggle = document.querySelectorAll("#menu-toggle");
+    $(function() {
+            $(menuToggle).on('click', function() {
+            $('#sidebar').toggleClass('active');
+            $('#menu-toggle').toggleClass('active');
+            $('#content').toggleClass('active');
+        });
+    });
+</script>
+<script>
+    var defoultPage = "http://127.0.0.1/LibraryApp/index.php"
+    if (defoultPage !== window.location.href) {
+    $(function() {
+            $('#sidebar').toggleClass('active');
+            $('#menu-toggle').toggleClass('active');
+            $('#content').toggleClass('active');
+    });
+    }
+</script>
 <?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
 <script>
     var arrows = document.querySelectorAll("#arrow");
@@ -82,4 +101,5 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
     });
 </script>
 <?php endif ?>
+</body>
 </html>

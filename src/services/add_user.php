@@ -27,33 +27,33 @@ if (isset($_POST['add_user'])) {
 <div id="add_user">
     <form action="index.php?admin_panel&panel=add_user" method="POST">
     <div class="form-group row">
-        <label for="inputUsername" class="col-sm-3 col-form-label">Nazwa użytkownika</label>
-        <div class="col-sm-9">
+        <label for="inputUsername" class="col-sm-4 col-form-label">Nazwa użytkownika</label>
+        <div class="col-sm-8">
         <input type="text" name="user_name" class="form-control" id="inputUsername" placeholder="Nazwa użytkownika" value="<?php if(isset($_POST['user_name'])) { echo $_POST['user_name'];} else {echo '';}?>">
         </div>
     </div>
     <div class="form-group row">
-        <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-9">
+        <label for="inputEmail" class="col-sm-4 col-form-label">Email</label>
+        <div class="col-sm-8">
         <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="<?php if(isset($_POST['email'])) { echo $_POST['email'];} else {echo '';}?>">
         </div>
     </div>
     <div class="form-group row">
-        <label for="inputPassword" class="col-sm-3 col-form-label">Hasło</label>
-        <div class="col-sm-9">
+        <label for="inputPassword" class="col-sm-4 col-form-label">Hasło</label>
+        <div class="col-sm-8">
         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Hasło">
         </div>
     </div>
     <div class="form-group row">
-        <label for="inputPassword2" class="col-sm-3 col-form-label"></label>
-        <div class="col-sm-9">
+        <label for="inputPassword2" class="col-sm-4 col-form-label"></label>
+        <div class="col-sm-8">
         <input type="password" name="password_repet" class="form-control" id="inputPassword2" placeholder="Powtórz hasło">
         </div>
     </div>
 
     <div class="form-group form-check">
     <input type="hidden" value="0" name="password_change">
-    <input type="checkbox" class="form-check-input " id="PwdChange" value="1" name="password_change">
+    <input type="checkbox" class="form-check-input" id="PwdChange" value="1" name="password_change">
     <label class="form-check-label checkbox" for="PwdChange">Użytkownik musi zmienić hasło przy logowaniu</label>
   </div>
     <fieldset class="form-group">

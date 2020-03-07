@@ -1,6 +1,6 @@
 .vertical-nav {
-  min-width: 20rem;
-  width: 20rem;
+  min-width: 18rem;
+  width: 18rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -8,18 +8,25 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
   transition: all 0.4s;
 }
+#menu-toggle{
+  color:black;
+  position: fixed;
+  top: 40px;
+  left: calc(15rem + 6px);
+  transform: rotate(90deg);
+  background: white;
+  transition: all 0.4s;
+  }
+
 .page-content {
   width: calc(100% - 17rem);
+  min-height: 100vh;
   margin-left: 17rem;
   transition: all 0.4s;
 }
 body {
   min-height: 100vh;
   overflow-x: hidden;
-}
-.page-content {
-  min-height: 100vh;
-  width: calc(100% - 17rem);
 }
 .separator {
   margin: 3rem 0;
@@ -128,6 +135,9 @@ body {
     font-weight: 700;
     width: 100vh;
 }
+.card-body {
+  min-height: 140px;
+}
 .card_footer {
   height: 50px;
 }
@@ -147,6 +157,16 @@ body {
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
+}
+#sidebar.active {
+  left: -20rem;
+}
+#menu-toggle.active {
+  left: -3rem;
+}
+#content.active {
+  margin-left: 0;
+  width: 100%;
 }
 input[type=checkbox],
 input[type=radio] {

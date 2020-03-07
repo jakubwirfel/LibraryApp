@@ -1,5 +1,5 @@
-<nav class="vertical-nav bg-white" id="sidebar">
-<div class="py-4 px-3 mb-4 bg-light">
+<nav class="vertical-nav bg-white overflow-auto" id="sidebar">
+        <div class="py-4 px-3 mb-2 bg-light">
             <div class="media d-flex align-items-center"><img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="logo" width="65" class="mr-3 rounded-circle img-thumbnail shadow">
                 <div class="media-body">
                     <h4 class="m-0">Biblioteka Główna Toruń</h4>
@@ -272,3 +272,5 @@ switch ($returned['group']) {
 }
 ?>
 </nav>
+<button id="menu-toggle" class="btn">Toggle Menu <i class="fa fa-
+filter"></i></button>
