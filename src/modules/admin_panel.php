@@ -17,7 +17,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-minus m-2 text-primary icon-admin-panel"></i>
-                            <a href="index.php?admin_panel=1&panel=delete_user" class="btn btn-primary btn-sm">Usuń</a>
+                            <a href="index.php?admin_panel&panel=delete_user" class="btn btn-primary btn-sm">Usuń</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-edit m-2 text-primary icon-admin-panel"></i>

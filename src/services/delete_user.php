@@ -19,13 +19,18 @@
         </thead>
         <tbody>
         <?php while($usaersRow = $query->fetch(PDO::FETCH_ASSOC)) { ?>
-        <tr class="text-center">
+        <tr id="userRow" class="text-center">
             <td><?php echo $usaersRow['user_name']?></td>
             <td><?php echo $usaersRow['user_email']?></td>
             <td><?php echo $usaersRow['group']?></td>
-            <td><a href="#" class="btn btn-danger btn-sm" id="userDelate"><i class="fas fa-trash"></i></a></td>
+            <td><input type="checkbox" id="userDelate" name="userToDelete" value="<?php echo $usaersRow['user_name']?>"></td>
         </tr>
         <?php }?>
         </tbody>
     </table>
+    <div class="form-group row">
+        <div class="col-sm-10">
+        <button type="submit" name="delete_user" value="DeleteUsers" class="btn btn-primary">Usuń zaznaczonych</button>
+        </div>
+    </div>
 </div>

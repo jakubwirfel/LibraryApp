@@ -168,6 +168,9 @@ body {
   margin-left: 0;
   width: 100%;
 }
+#userRow.active {
+  background: #0275d8 !important;
+}
 input[type=checkbox],
 input[type=radio] {
   -ms-transform: scale(1.5); /* IE */
