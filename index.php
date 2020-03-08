@@ -69,38 +69,9 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         </div>
         <!-- End Errors box -->
     </main>
-<script>
-    var menuToggle = document.querySelectorAll("#menu-toggle");
-    $(function() {
-            $(menuToggle).on('click', function() {
-            $('#sidebar').toggleClass('active');
-            $('#menu-toggle').toggleClass('active');
-            $('#content').toggleClass('active');
-        });
-    });
-</script>
-<script>
-    var href = window.location.href;
-    var n = href.includes("admin_panel");
-    if (n !== true) {
-        $(function() {
-            $('#sidebar').toggleClass('active');
-            $('#menu-toggle').toggleClass('active');
-            $('#content').toggleClass('active');
-        });
-    }
-</script>
+<script src="./public/js/menuToggle.js"></script>
 <?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
-<script>
-    var arrows = document.querySelectorAll("#arrow");
-    var panel_buttons = document.querySelectorAll("#panelCollapse");
-    $(function() {
-            $(panel_buttons).on('click', function() {
-            $('#panel').toggleClass('active');
-            $(arrows).toggleClass('active');
-        });
-    });
-</script>
+<script src="./public/js/panelToggle.js"></script>
 <?php endif ?>
 </body>
 </html>
