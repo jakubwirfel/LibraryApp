@@ -4,7 +4,7 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -20rem;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
   transition: all 0.4s;
 }
@@ -12,16 +12,15 @@
   color:black;
   position: fixed;
   top: 40px;
-  left: calc(15rem + 6px);
+  left: -3rem;
   transform: rotate(90deg);
   background: white;
   transition: all 0.4s;
   }
 
 .page-content {
-  width: calc(100% - 17rem);
+  width: 100%;
   min-height: 100vh;
-  margin-left: 17rem;
   transition: all 0.4s;
 }
 body {
@@ -159,14 +158,14 @@ body {
   -o-transform: rotate(180deg);
 }
 #sidebar.active {
-  left: -20rem;
+  left: 0;
 }
 #menu-toggle.active {
-  left: -3rem;
+  left: 15rem;
 }
 #content.active {
-  margin-left: 0;
-  width: 100%;
+  margin-left: 17rem;
+  width: calc(100% - 17rem);
 }
 #userRow.active {
   background: #0275d8 !important;

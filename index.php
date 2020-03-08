@@ -80,13 +80,14 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
     });
 </script>
 <script>
-    var defoultPage = "http://127.0.0.1/LibraryApp/index.php"
-    if (defoultPage !== window.location.href) {
-    $(function() {
+    var href = window.location.href;
+    var n = href.includes("admin_panel");
+    if (n !== true) {
+        $(function() {
             $('#sidebar').toggleClass('active');
             $('#menu-toggle').toggleClass('active');
             $('#content').toggleClass('active');
-    });
+        });
     }
 </script>
 <?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
