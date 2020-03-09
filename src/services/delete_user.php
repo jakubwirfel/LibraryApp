@@ -8,6 +8,13 @@
     }
 ?>
 <div>
+    <div class="input-group md-form form-sm form-1 pl-0 pb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-primary lighten-2" id="basic-text1"><i class="fas fa-search text-white"
+                aria-hidden="true"></i></span>
+        </div>
+        <input class="form-control my-0 py-1" name="searchUser" type="text" placeholder="Search" aria-label="Search">
+    </div>
     <table class="table table-dark table-hover">
         <thead>
         <tr class="text-center">
@@ -18,14 +25,16 @@
         </tr>
         </thead>
         <tbody>
-        <?php while($usaersRow = $query->fetch(PDO::FETCH_ASSOC)) { ?>
-        <tr id="userRow" class="text-center">
+        <?php $count = 1;
+            while($usaersRow = $query->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+        <tr id="<?php echo "userRow" . $count?>" class="text-center ">
             <td><?php echo $usaersRow['user_name']?></td>
             <td><?php echo $usaersRow['user_email']?></td>
             <td><?php echo $usaersRow['group']?></td>
-            <td><input type="checkbox" id="userDelate" name="userToDelete" value="<?php echo $usaersRow['user_name']?>"></td>
+            <td><input type="checkbox" id="userDelate" name="userToDelete" value="<?php echo $usaersRow['user_name']?>" onclick="UserMark(<?php echo $count ?>)"></td>
         </tr>
-        <?php }?>
+        <?php $count = $count + 1; }?>
         </tbody>
     </table>
     <div class="form-group row">

@@ -70,6 +70,7 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <!-- End Errors box -->
     </main>
 <script src="./public/js/menuToggle.js"></script>
+<script src="./public/js/usersToggle.js"></script>
 <?php if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :?>
 <script src="./public/js/panelToggle.js"></script>
 <?php endif ?>
