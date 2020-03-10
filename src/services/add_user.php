@@ -17,7 +17,7 @@ if (isset($_POST['add_user'])) {
         $group = trim($_POST['group']);
         $addNewUser -> addUser($userName, $userEmail, $password_hashed, $pwdChange, $group);
         unset($accept_password);
-        array_push($errors, "User added");
+        array_push($errors, "User $userName added");
     } else {
         array_push($errors, "User cannot be added");
     }

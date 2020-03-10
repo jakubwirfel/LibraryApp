@@ -1,6 +1,8 @@
-var checkboxes = document.querySelectorAll('#userDelate');
-var userRows =  document.querySelectorAll('#userRow');
-function UserMark(userNumber) {
-    var User = '#userRow' + userNumber;
-    $(User).toggleClass('bg-danger');
+$('.radio-btn').click(function() {
+    $(".user_row").each(isChecked)
+})
+
+function isChecked() {
+    var checked = $(this).find(".radio-btn").is(":checked")
+    $(this).toggleClass("bg-danger", checked)
 }

@@ -3,7 +3,6 @@ include_once 'validators.class.php';
 class UserServices extends Validators {
     protected $db;
 
-
     public function __construct($database) {
         $this -> db = $database;
     }
@@ -24,13 +23,12 @@ class UserServices extends Validators {
             array_push($errors, $e->getMessage());
         }
     }
-
-    public function selectAllUsers() {
+    public function deleteUser($user_id) {
         try {
-            $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id";
+            $sql = "DELETE FROM users WHERE user_id = :user_id";
             $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":user_id", $user_id);
             $query -> execute();
-            $row = $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
         }
