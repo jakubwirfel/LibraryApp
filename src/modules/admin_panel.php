@@ -21,7 +21,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-user-edit m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm">Modyfikuj</a>
+                            <a href="index.php?admin_panel&panel=modify_user" class="btn btn-primary btn-sm">Modyfikuj</a>
                         </div>
                     </div>
                 </div>
@@ -196,6 +196,9 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
             }
             if($_GET['panel']=='delete_user') {
                 include_once './src/services/delete_user.php';
+            }
+            if($_GET['panel']=='modify_user') {
+                include_once './src/services/modify_user.php';
             }
         }
         ?>
