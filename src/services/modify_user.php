@@ -57,7 +57,7 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
             <td><?php echo $usersRow['user_name']?></td>
             <td><?php echo $usersRow['user_email']?></td>
             <td><?php echo $usersRow['group']?></td>
-            <td><button onClick="javascript:window.open('http://127.0.0.1/libraryapp/user_display.php?user=<?php echo $usersRow['user_id']?>','Windows','width=650,height=650,location=no,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,directories=no,status=no');return false")" value="<?php echo $usersRow['user_id']?>" class="btn-md btn-danger"><i class="fas fa-eye"></i></button></td>
+            <td><button onClick="javascript:window.open('http://127.0.0.1/LibraryApp/user_display.php?user=<?php echo $usersRow['user_id']?>','Windows','width=650,height=650,location=no,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,directories=no,status=no');return false")" value="<?php echo $usersRow['user_id']?>" class="btn-md btn-danger"><i class="fas fa-eye"></i></button></td>
         </tr>
         <?php }?>
         </tbody>
