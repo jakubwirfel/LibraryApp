@@ -56,9 +56,9 @@
         <h1 class="navbar-brand">User <u><?php echo $usersRow['user_name'] . "/" . $usersRow['user_id'] ?> </u>display and modification</h1>
     </nav>
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="p-5">
-    <button class="btn btn-primary mt-5"><i class="fas fa-pen"></i> Edit</button>
+    <div class="btn btn-primary mt-5" id="ToogleFieldset"><i class="fas fa-pen"></i> Edit</div>
     <hr>
-    <fieldset disabled>
+    <fieldset id="Fieldset" disabled>
         <div class="form-group row">
             <div class="col">
                 <div class="row">
@@ -160,6 +160,17 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
     </form>
+    <script>
+        var toogleFieldset = document.getElementById("ToogleFieldset");
+        var fieldset = document.getElementById("Fieldset");
+        toogleFieldset.addEventListener("click" , function(){
+            if (fieldset.disabled == false) {
+                fieldset.disabled = true;
+            } else {
+                fieldset.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
 <?php } endif ?>
