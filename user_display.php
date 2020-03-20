@@ -148,7 +148,7 @@
                     <label for="inputPwd" class="col-sm-auto col-form-label">User password change? </label>
                     <div class="col-sm-1">
                         <input type="hidden" value="0" name="userPwdChange">
-                        <input type="radio"<?php if($usersRow['user_pwd_change'] == 1){echo "checked";}?> name="userPwdChange" class="form-control" id="inputPwd" value="1">
+                        <input type="radio" name="userPwdChange" class="form-control" id="inputPwd" value="1">
                     </div>
                 </div>
             </div>

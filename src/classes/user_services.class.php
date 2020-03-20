@@ -51,6 +51,7 @@ class UserServices extends Validators {
             $query -> bindParam(":userPwdChange", $userPwdChange);
             $query -> bindParam(":group", $group);
             $query -> execute();
+            echo "<script>window.close();</script>";
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
         }
