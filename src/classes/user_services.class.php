@@ -7,14 +7,22 @@ class UserServices extends Validators {
         $this -> db = $database;
     }
 
-    public function addUser($username, $email, $password, $pwdChange, $group) {
+    public function addUser($userName, $userEmail, $password_hashed, $pwdChange, $group, $firstName, $lastName, $postCode, $city, $street, $houseNum, $phoneNum) {
         try {
+            global $errors;
             $date = date("Y-m-d");
-            $sql = "INSERT INTO users (`user_name`, `user_email`, `user_password`, `user_pwd_change`, `user_pwd_change_date`, `group`) VALUES (:user_name, :user_email, :user_password, :pwd_change, :change_date, :group)";
+            $sql = "INSERT INTO users (`user_name`, `user_email`,`first_name`,`last_name`, `phone_num`, `post_code`, `city`, `street`, `house_num`, `user_password`, `user_pwd_change`, `user_pwd_change_date`, `group`) VALUES (:user_name, :user_email, :firstName, :lastName, :phoneNum, :postCode, :city, :street, :houseNum, :user_password, :pwd_change, :change_date, :group)";
             $query = $this -> db -> prepare($sql);
-            $query -> bindParam(":user_name", $username);
-            $query -> bindParam(":user_email", $email);
-            $query -> bindParam(":user_password", $password);
+            $query -> bindParam(":user_name", $userName);
+            $query -> bindParam(":user_email", $userEmail);
+            $query -> bindParam(":firstName", $firstName);
+            $query -> bindParam(":lastName", $lastName);
+            $query -> bindParam(":phoneNum", $phoneNum);
+            $query -> bindParam(":postCode", $postCode);
+            $query -> bindParam(":city", $city);
+            $query -> bindParam(":street", $street);
+            $query -> bindParam(":houseNum", $houseNum);
+            $query -> bindParam(":user_password", $password_hashed);
             $query -> bindParam(":pwd_change", $pwdChange);
             $query -> bindParam(":change_date", $date);
             $query -> bindParam(":group", $group);
