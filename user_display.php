@@ -35,18 +35,18 @@
 
     if(isset($_POST['update']) && $_POST['update'] == 'Update'){
         try {
-            $userId = $_POST['userId'];
-            $userName = $_POST['userName'];
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $userEmail = $_POST['email'];
-            $phoneNum = $_POST['phone'];
-            $postCode = $_POST['postCode'];
-            $city = $_POST['city'];
-            $street = $_POST['street'];
-            $houseNum = $_POST['houseNum'];
-            $userPwdChange = $_POST['userPwdChange'];
-            $group = $_POST['group'];
+            $userId = trim($_POST['userId']);
+            $userName = trim($_POST['userName']);
+            $firstName = trim($_POST['firstName']);
+            $lastName = trim($_POST['lastName']);
+            $userEmail = trim($_POST['email']);
+            $phoneNum = trim($_POST['phone']);
+            $postCode = trim($_POST['postCode']);
+            $city = trim($_POST['city']);
+            $street = trim($_POST['street']);
+            $houseNum = trim($_POST['houseNum']);
+            $userPwdChange = trim($_POST['userPwdChange']);
+            $group = trim($_POST['group']);
             $UserServices -> modifyUser($userId, $userName, $firstName, $lastName, $userEmail, $phoneNum, $postCode, $city, $street, $houseNum, $userPwdChange, $group);
         } catch (PDOException $e) {
             array_push($errors, $e->getMessage());
