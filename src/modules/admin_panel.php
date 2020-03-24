@@ -39,7 +39,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                     <div class="row">
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-plus m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Dodaj</a>
+                            <a href="index.php?admin_panel&panel=add_post" class="btn btn-primary btn-sm" id="panelCollapse">Dodaj</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-minus m-2 text-primary icon-admin-panel"></i>
@@ -199,6 +199,9 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
             }
             if($_GET['panel']=='modify_user') {
                 include_once './src/services/modify_user.php';
+            }
+            if($_GET['panel']=='add_post') {
+                include_once './src/services/add_post.php';
             }
         }
         ?>
