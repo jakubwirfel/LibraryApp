@@ -43,7 +43,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-minus m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Usuń</a>
+                            <a href="index.php?admin_panel&panel=delete_post" class="btn btn-primary btn-sm" id="panelCollapse">Usuń</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-edit m-2 text-primary icon-admin-panel"></i>
@@ -202,6 +202,9 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
             }
             if($_GET['panel']=='add_post') {
                 include_once './src/services/add_post.php';
+            }
+            if($_GET['panel']=='delete_post') {
+                include_once './src/services/delete_post.php';
             }
         }
         ?>

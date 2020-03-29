@@ -1,12 +1,17 @@
 <?php
-$addPost = new PostServices($database);
+$postServices = new PostServices($database);
 
-if (isset($_POST['addPost'])) {
-
+if (isset($_POST['addPost']) && $_POST['addPost'] == 'AddPost' && isset($_FILES['image'])) {
+    $title = trim($_POST['title']);
+    $header = trim($_POST['header']);
+    $content = trim($_POST['content']);
+    $footer = trim($_POST['footer']);
+    $image = $_FILES['image'];
+    $postServices ->  addPost($title, $header, $content, $footer, $image);
 }
 ?>
 <div id="add_user">
-    <form action="index.php?admin_panel&panel=add_user" method="POST">
+    <form action="index.php?admin_panel&panel=add_post" method="POST" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="inputTitle" class="col-sm-4 col-form-label">Tytuł</label>
         <div class="col-sm-8">
