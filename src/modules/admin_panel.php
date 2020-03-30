@@ -93,7 +93,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                     <div class="row">
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-envelope m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Wyślij</a>
+                            <a href="index.php?admin_panel&panel=create_notification" class="btn btn-primary btn-sm" id="panelCollapse">Wyślij</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-minus m-2 text-primary icon-admin-panel"></i>
@@ -208,6 +208,9 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
             }
             if($_GET['panel']=='modify_post') {
                 include_once './src/services/modify_post.php';
+            }
+            if($_GET['panel']=='create_notification') {
+                include_once './src/services/create_notification.php';
             }
         }
         ?>

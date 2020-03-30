@@ -3,17 +3,19 @@ $UserServices = new UserServices($database);
 if (isset($_POST['searchUser']) && $_POST['searchUser'] !== '') {
     try {
         $searchUser =  '%' . $_POST['searchUser'] . '%';
-        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_name LIKE :user_name";
+        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_name LIKE :user_name AND user_id != :userId";
         $query = $database -> prepare($sql);
         $query -> bindParam(":user_name", $searchUser);
+        $query -> bindParam(":userId", $_SESSION['user_session']);
         $query->execute();
     } catch (PDOException $e) {
         array_push($errors, $e->getMessage());
     }
 } else {
     try {
-        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id";
+        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_id != :userId";
         $query = $database -> prepare($sql);
+        $query -> bindParam(":userId", $_SESSION['user_session']);
         $query->execute();
     } catch (PDOException $e) {
         array_push($errors, $e->getMessage());
@@ -27,8 +29,9 @@ if (isset($_POST['deleteUser']) && $_POST['deleteUser'] == 'DeleteUsers') {
 }
 if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
     try {
-        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id";
+        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_id != :userId";
         $query = $database -> prepare($sql);
+        $query -> bindParam(":userId", $_SESSION['user_session']);
         $query->execute();
     } catch (PDOException $e) {
         array_push($errors, $e->getMessage());
@@ -36,6 +39,7 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
 }
 ?>
 <div>
+<h6 class="display-4 my-3">Select user for deletion</h6>
 <form action="index.php?admin_panel&panel=delete_user" method="POST">
     <div class="input-group md-form form-sm form-1 pl-0 pb-3">
         <div class="input-group-prepend">

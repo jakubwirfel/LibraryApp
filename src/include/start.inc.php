@@ -19,6 +19,7 @@ require('./src/classes/user.class.php');
 require('./src/classes/change_password.class.php');
 require('./src/classes/user_services.class.php');
 require('./src/classes/post_services.class.php');
+require('./src/classes/notification_services.class.php');
 
 //make use of DB with user
 $user = new User($database);

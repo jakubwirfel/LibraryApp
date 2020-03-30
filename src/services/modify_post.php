@@ -30,6 +30,7 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
 }
 ?>
 <div>
+<h6 class="display-4 my-3">Select post for modification</h6>
 <form action="index.php?admin_panel&panel=modify_post" method="POST">
     <div class="input-group md-form form-sm form-1 pl-0 pb-3">
         <div class="input-group-prepend">

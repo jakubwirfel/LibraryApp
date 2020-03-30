@@ -31,6 +31,7 @@ if (isset($_POST['add_user'])) {
 
 }
 ?>
+<h6 class="display-4 my-3">Add user</h6>
 <div id="add_user">
     <form action="index.php?admin_panel&panel=add_user" method="POST">
     <div class="form-group row">
