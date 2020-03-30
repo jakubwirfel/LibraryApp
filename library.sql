@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Mar 2020, 08:53
+-- Czas generowania: 30 Mar 2020, 14:33
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.1
 
@@ -46,6 +46,28 @@ INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `notification_id` int(11) NOT NULL,
+  `sender` int(11) NOT NULL,
+  `recipient` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `massage` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `notifications`
+--
+
+INSERT INTO `notifications` (`notification_id`, `sender`, `recipient`, `date`, `massage`) VALUES
+(1, 4, 10, '2020-03-30', 'test'),
+(2, 4, 10, '2020-03-22', 'Test');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `posts`
 --
 
@@ -53,7 +75,8 @@ CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `creator` int(11) NOT NULL,
   `date` date NOT NULL,
-  `img` varchar(100) NOT NULL,
+  `img_name` varchar(30) NOT NULL,
+  `img_dir` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `header` varchar(100) NOT NULL,
   `content` text NOT NULL,
@@ -65,8 +88,9 @@ CREATE TABLE `posts` (
 -- Zrzut danych tabeli `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `creator`, `date`, `img`, `title`, `header`, `content`, `footer`, `likes`) VALUES
-(1, 10, '2020-03-22', '\"test\"', 'testtestetsettsetsttes', 'testetstetsttettestetstetsttetteste', 'testetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttettestetstetsttet', 'testetstetsttettestetstetsttettestetstetsttettestetst', 5);
+INSERT INTO `posts` (`post_id`, `creator`, `date`, `img_name`, `img_dir`, `title`, `header`, `content`, `footer`, `likes`) VALUES
+(13, 4, '2020-03-30', 'cloud.png', './public/uploads/post_img/cloud.png', 'Testowy post', 'Testowy nagłówek', 'Tekst główny', 'Stopka posta', 0),
+(14, 4, '2020-03-30', 'cloud.png', './public/uploads/post_img/cloud.png', 'Tytuł drugi', 'Nagłówek drugi', 'Tekst główny drugi', 'Stopka druga', 0);
 
 -- --------------------------------------------------------
 
@@ -112,6 +136,14 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`notification_id`),
+  ADD KEY `sender` (`sender`),
+  ADD KEY `recipient` (`recipient`);
+
+--
 -- Indeksy dla tabeli `posts`
 --
 ALTER TABLE `posts`
@@ -136,10 +168,16 @@ ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT dla tabeli `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT dla tabeli `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
@@ -150,6 +188,13 @@ ALTER TABLE `users`
 --
 -- Ograniczenia dla zrzutów tabel
 --
+
+--
+-- Ograniczenia dla tabeli `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `users` (`user_id`);
 
 --
 -- Ograniczenia dla tabeli `posts`
