@@ -24,7 +24,7 @@
     }
 
     try {
-        $userId = 10;
+        $userId = $_GET['user'];
         $sql2 = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_id LIKE :user_id LIMIT 1";
         $query2 = $database -> prepare($sql2);
         $query2 -> bindParam(":user_id", $userId);
