@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Mar 2020, 14:33
+-- Czas generowania: 30 Mar 2020, 20:13
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.1
 
@@ -52,18 +52,12 @@ INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
 CREATE TABLE `notifications` (
   `notification_id` int(11) NOT NULL,
   `sender` int(11) NOT NULL,
-  `recipient` int(11) NOT NULL,
+  `recipient` int(11) DEFAULT NULL,
   `date` date NOT NULL,
-  `massage` varchar(200) NOT NULL
+  `massage` varchar(200) NOT NULL,
+  `for_group` tinyint(1) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Zrzut danych tabeli `notifications`
---
-
-INSERT INTO `notifications` (`notification_id`, `sender`, `recipient`, `date`, `massage`) VALUES
-(1, 4, 10, '2020-03-30', 'test'),
-(2, 4, 10, '2020-03-22', 'Test');
 
 -- --------------------------------------------------------
 
@@ -89,7 +83,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `creator`, `date`, `img_name`, `img_dir`, `title`, `header`, `content`, `footer`, `likes`) VALUES
-(13, 4, '2020-03-30', 'cloud.png', './public/uploads/post_img/cloud.png', 'Testowy post', 'Testowy nagłówek', 'Tekst główny', 'Stopka posta', 0),
+(13, 4, '2020-03-30', 'cloud.png', './public/uploads/post_img/cloud.png', 'Testowy post1', 'Testowy nagłówek', 'Tekst główny', 'Stopka posta', 0),
 (14, 4, '2020-03-30', 'cloud.png', './public/uploads/post_img/cloud.png', 'Tytuł drugi', 'Nagłówek drugi', 'Tekst główny drugi', 'Stopka druga', 0);
 
 -- --------------------------------------------------------
@@ -141,7 +135,8 @@ ALTER TABLE `groups`
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`notification_id`),
   ADD KEY `sender` (`sender`),
-  ADD KEY `recipient` (`recipient`);
+  ADD KEY `recipient` (`recipient`),
+  ADD KEY `group_id` (`group_id`) USING BTREE;
 
 --
 -- Indeksy dla tabeli `posts`
@@ -165,13 +160,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT dla tabeli `posts`
@@ -194,7 +189,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `notifications_ibfk_3` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`);
 
 --
 -- Ograniczenia dla tabeli `posts`
