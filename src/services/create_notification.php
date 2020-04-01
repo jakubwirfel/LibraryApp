@@ -1,5 +1,4 @@
 <?php
-$UserServices = new UserServices($database);
 if (isset($_POST['searchUser']) && $_POST['searchUser'] !== '') {
     try {
         $searchUser =  '%' . $_POST['searchUser'] . '%';

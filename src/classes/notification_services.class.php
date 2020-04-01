@@ -30,5 +30,16 @@ class NotificationServices {
             array_push($errors, $e->getMessage());
         }
     }
+
+    public function deleteNotification($notificationId) {
+        try {
+            $sql = "DELETE FROM notifications WHERE notification_id = :notificationId";
+            $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":notificationId", $notificationId);
+            $query -> execute();
+        } catch (PDOException $e) {
+            array_push($errors, $e->getMessage());
+        }
+    }
 }
 ?>

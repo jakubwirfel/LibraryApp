@@ -31,6 +31,7 @@
     } catch (PDOException $e) {
         array_push($errors, $e->getMessage());
     }
+
     try {
         $sql3 = "SELECT * FROM groups";
         $query3 = $database -> prepare($sql3);
