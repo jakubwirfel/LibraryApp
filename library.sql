@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Mar 2020, 20:13
+-- Czas generowania: 02 Kwi 2020, 19:08
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.1
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `library`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `contact_id` int(11) NOT NULL,
+  `contact_name` varchar(60) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `supervisor` varchar(60) NOT NULL,
+  `contact_email` varchar(60) NOT NULL,
+  `contact_phone` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `contacts`
+--
+
+INSERT INTO `contacts` (`contact_id`, `contact_name`, `group_id`, `supervisor`, `contact_email`, `contact_phone`) VALUES
+(1, 'Dział IT', 1, 'Jakub Wirfel', 'jakub@mail.com', '000-000-000'),
+(2, 'Dyrektor', 1, 'Kowalski Jan', 'kowalski@gan.pl', '978-435-756');
 
 -- --------------------------------------------------------
 
@@ -58,6 +81,13 @@ CREATE TABLE `notifications` (
   `for_group` tinyint(1) DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `notifications`
+--
+
+INSERT INTO `notifications` (`notification_id`, `sender`, `recipient`, `date`, `massage`, `for_group`, `group_id`) VALUES
+(99, 4, 10, '2020-04-01', 'Test1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,6 +154,13 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `first_name`, `last_n
 --
 
 --
+-- Indeksy dla tabeli `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`contact_id`),
+  ADD KEY `group_for` (`group_id`);
+
+--
 -- Indeksy dla tabeli `groups`
 --
 ALTER TABLE `groups`
@@ -157,6 +194,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT dla tabeli `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT dla tabeli `groups`
 --
 ALTER TABLE `groups`
@@ -166,7 +209,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT dla tabeli `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT dla tabeli `posts`
@@ -183,6 +226,12 @@ ALTER TABLE `users`
 --
 -- Ograniczenia dla zrzutów tabel
 --
+
+--
+-- Ograniczenia dla tabeli `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`);
 
 --
 -- Ograniczenia dla tabeli `notifications`
