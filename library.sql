@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 02 Kwi 2020, 19:08
+-- Czas generowania: 04 Kwi 2020, 16:52
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.1
 
@@ -43,7 +43,7 @@ CREATE TABLE `contacts` (
 
 INSERT INTO `contacts` (`contact_id`, `contact_name`, `group_id`, `supervisor`, `contact_email`, `contact_phone`) VALUES
 (1, 'Dział IT', 1, 'Jakub Wirfel', 'jakub@mail.com', '000-000-000'),
-(2, 'Dyrektor', 1, 'Kowalski Jan', 'kowalski@gan.pl', '978-435-756');
+(2, 'Dyrektor', 2, 'Kowalski Jan', 'kowalski@gan.pl', '978-435-756');
 
 -- --------------------------------------------------------
 
@@ -65,6 +65,28 @@ INSERT INTO `groups` (`id`, `name`, `permissions`) VALUES
 (1, 'Standard user', 'user = 1'),
 (2, 'Moderator', 'mod = 1'),
 (3, 'Administrator', 'admin = 1');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `help_articles`
+--
+
+CREATE TABLE `help_articles` (
+  `article_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `article_name` varchar(60) NOT NULL,
+  `article_title` varchar(100) NOT NULL,
+  `article_content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `help_articles`
+--
+
+INSERT INTO `help_articles` (`article_id`, `group_id`, `article_name`, `article_title`, `article_content`) VALUES
+(2, 1, 'Article', 'Title article', 'Test tekst'),
+(4, 3, 'Dupa12', 'dupa12', 'Dupa12');
 
 -- --------------------------------------------------------
 
@@ -167,6 +189,13 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `help_articles`
+--
+ALTER TABLE `help_articles`
+  ADD PRIMARY KEY (`article_id`),
+  ADD KEY `group_id` (`group_id`);
+
+--
 -- Indeksy dla tabeli `notifications`
 --
 ALTER TABLE `notifications`
@@ -206,6 +235,12 @@ ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT dla tabeli `help_articles`
+--
+ALTER TABLE `help_articles`
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT dla tabeli `notifications`
 --
 ALTER TABLE `notifications`
@@ -232,6 +267,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `contacts`
   ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`);
+
+--
+-- Ograniczenia dla tabeli `help_articles`
+--
+ALTER TABLE `help_articles`
+  ADD CONSTRAINT `help_articles_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`);
 
 --
 -- Ograniczenia dla tabeli `notifications`
