@@ -143,15 +143,15 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                     <div class="row">
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-plus m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Dodaj artykuł</a>
+                            <a href="index.php?admin_panel&panel=add_article" class="btn btn-primary btn-sm" id="panelCollapse">Dodaj artykuł</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-minus m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Usuń artykuł</a>
+                            <a href="index.php?admin_panel&panel=delete_article" class="btn btn-primary btn-sm" id="panelCollapse">Usuń artykuł</a>
                         </div>
                         <div class="col-sm d-flex flex-column justify-content-center align-items-center">
                             <i class="fas fa-edit m-2 text-primary icon-admin-panel"></i>
-                            <a href="#" class="btn btn-primary btn-sm" id="panelCollapse">Modyfikuj artykuł</a>
+                            <a href="index.php?admin_panel&panel=modify_article" class="btn btn-primary btn-sm" id="panelCollapse">Modyfikuj artykuł</a>
                         </div>
                     </div>
                 </div>
@@ -219,6 +219,15 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
             }
             if($_GET['panel']=='modify_contact') {
                 include_once './src/services/modify_contact.php';
+            }
+            if($_GET['panel']=='add_article') {
+                include_once './src/services/add_help_article.php';
+            }
+            if($_GET['panel']=='delete_article') {
+                include_once './src/services/delete_help_article.php';
+            }
+            if($_GET['panel']=='modify_article') {
+                include_once './src/services/modify_help_article.php';
             }
         }
         ?>
