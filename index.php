@@ -45,6 +45,9 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"  rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     </head>
 <body>
 <!-- Vertical navbar -->
@@ -55,6 +58,9 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         <?php
         if(isset($_GET['admin_panel'])) {
             include_once './src/modules/admin_panel.php';
+        }
+        if(isset($_GET['book_add'])) {
+            include_once './src/modules/book_add.php';
         }
         ?>
         <!-- Errors box -->

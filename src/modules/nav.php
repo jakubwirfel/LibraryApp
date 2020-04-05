@@ -164,9 +164,15 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?book_add" class="nav-link text-dark font-italic">
                     <i class="fa fa-book  mr-3 text-primary fa-fw"></i>
                     Dodaj książkę do zbioru
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-minus-circle mr-3 text-primary fa-fw"></i>
+                    Usuń książkę do zbioru
                 </a>
             </li>
             <li class="nav-item ">
