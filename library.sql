@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Kwi 2020, 16:52
+-- Czas generowania: 05 Kwi 2020, 13:10
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.1
 
@@ -21,6 +21,96 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `library`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `books`
+--
+
+CREATE TABLE `books` (
+  `book_id` int(11) NOT NULL,
+  `book_title` varchar(200) NOT NULL,
+  `book_author` varchar(100) NOT NULL,
+  `book_description` text NOT NULL,
+  `book_type` int(11) NOT NULL,
+  `book_pub_year` date NOT NULL,
+  `book_num_pages` int(4) NOT NULL,
+  `book_img_title` varchar(60) NOT NULL,
+  `book_img_dir` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `books`
+--
+
+INSERT INTO `books` (`book_id`, `book_title`, `book_author`, `book_description`, `book_type`, `book_pub_year`, `book_num_pages`, `book_img_title`, `book_img_dir`) VALUES
+(2, 'Alicja w Krainie Czarów', 'Lewis Carroll', 'Alicja w Krainie Czarów – powieść z 1865 roku autorstwa Charlesa Lutwidge’a Dodgsona, który opublikował ją pod pseudonimem Lewis Carroll. Dosłowne tłumaczenie tytułu brzmi Przygody Alicji w Krainie Dziwów.', 11, '1910-02-05', 400, 'alicja-w-krainie-czarow.jpg', './public/uploads/book_img/alicja-w-krainie-czarow.jpg'),
+(4, 'To', 'Stephen King', 'To – powieść Stephena Kinga wydana w 1986 roku. W Polsce wydana po raz pierwszy w trzech tomach w 1993 roku przez Amber oraz dwukrotnie wznowiona w jednym tomie przez Zysk i S-ka pod tytułem TO. Powieść została wydana również w 2009 roku przez wydawnictwo Albatros/A.', 14, '1986-09-15', 1138, 'to.jpg', './public/uploads/book_img/to.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `books_types`
+--
+
+CREATE TABLE `books_types` (
+  `type_id` int(11) NOT NULL,
+  `type_name` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `books_types`
+--
+
+INSERT INTO `books_types` (`type_id`, `type_name`) VALUES
+(1, 'Action and adventure'),
+(2, 'Alternate history'),
+(3, 'Anthology'),
+(4, 'Chick lit'),
+(5, 'Children\'s'),
+(6, 'Comic book'),
+(7, 'Coming-of-age'),
+(8, 'Crime'),
+(9, 'Drama'),
+(10, 'Fairytale'),
+(11, 'Fantasy'),
+(12, 'Graphic novel'),
+(13, 'Historical fiction'),
+(14, 'Horror'),
+(15, 'Mystery'),
+(16, 'Paranormal romance'),
+(17, 'Picture book'),
+(18, 'Poetry'),
+(19, 'Political thriller'),
+(20, 'Romance'),
+(21, 'Satire'),
+(22, 'Science fiction'),
+(23, 'Short story'),
+(24, 'Suspense'),
+(25, 'Thriller'),
+(26, 'Art'),
+(27, 'Autobiography'),
+(28, 'Biography'),
+(29, 'Book review'),
+(30, 'Cookbook'),
+(31, 'Diary'),
+(32, 'Dictionary'),
+(33, 'Encyclopedia'),
+(34, 'Guide'),
+(35, 'Health'),
+(36, 'History'),
+(37, 'Journal'),
+(38, 'Math'),
+(39, 'Memoir'),
+(40, 'Prayer'),
+(41, 'Religion, spirituality, and new age'),
+(42, 'Textbook'),
+(43, 'Review'),
+(44, 'Science'),
+(45, 'Self help'),
+(46, 'Travel'),
+(47, '	True crime');
 
 -- --------------------------------------------------------
 
@@ -176,6 +266,19 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `first_name`, `last_n
 --
 
 --
+-- Indeksy dla tabeli `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`book_id`),
+  ADD KEY `book_type` (`book_type`);
+
+--
+-- Indeksy dla tabeli `books_types`
+--
+ALTER TABLE `books_types`
+  ADD PRIMARY KEY (`type_id`);
+
+--
 -- Indeksy dla tabeli `contacts`
 --
 ALTER TABLE `contacts`
@@ -223,6 +326,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT dla tabeli `books`
+--
+ALTER TABLE `books`
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT dla tabeli `books_types`
+--
+ALTER TABLE `books_types`
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
 -- AUTO_INCREMENT dla tabeli `contacts`
 --
 ALTER TABLE `contacts`
@@ -261,6 +376,12 @@ ALTER TABLE `users`
 --
 -- Ograniczenia dla zrzutów tabel
 --
+
+--
+-- Ograniczenia dla tabeli `books`
+--
+ALTER TABLE `books`
+  ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`book_type`) REFERENCES `books_types` (`type_id`);
 
 --
 -- Ograniczenia dla tabeli `contacts`
