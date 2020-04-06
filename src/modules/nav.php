@@ -8,7 +8,7 @@
         </div>
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Język</p>
         <div class="container lang_container">
-            <div class="row">
+            <div class="row lang_img">
                 <div class="col-xs-6 px-3 mb-3">
                     <a href="#"/><img src="./public/assets/poland_flag.svg" alt="Polish language"  width="50" /></a>
                 </div>
@@ -80,7 +80,7 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?search_book" class="nav-link text-dark font-italic">
                     <i class="fa fa-search mr-3 text-primary fa-fw"></i>
                     Wyszukiwanie książek
                 </a>

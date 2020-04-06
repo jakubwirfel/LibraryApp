@@ -43,10 +43,10 @@ body {
   transition: ease-in-out 0.2s;
     background-color: rgba(0, 0, 0, 0.1) ;
 }
-.row img:hover {
+.lang_img img:hover {
   transform: scale(1.2);
 }
-.row img {
+.lang_img img {
   transition: ease 0.5s;
 }
 .badge-notify{
