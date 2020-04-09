@@ -19,6 +19,17 @@ if (isset($_POST['searchBook']) && $_POST['searchBook'] !== '') {
         array_push($errors, $e->getMessage());
     }
 }
+
+if (isset($_POST['reservationSubmit']) && $_POST['reservationSubmit'] == 'Reserved') {
+    $bookServices = new BookServices($database);
+    $bookId = trim($_POST['bookId']);
+    $date = trim($_POST['date']);
+    $notes = trim($_POST['notes']);
+    if(!isset($notes)) {
+        $notes = "";
+    }
+    $bookServices -> reservBook($bookId, $date, $notes);
+}
 ?>
 <div class="container-fluid content_container py-1 px-5">
     <h6 class="display-4 my-3">Find book for you</h6>
@@ -54,6 +65,7 @@ if (isset($_POST['searchBook']) && $_POST['searchBook'] !== '') {
                 <td hidden><?php echo $bookRow['book_description']?></td>
                 <td hidden><?php echo $bookRow['book_img_title']?></td>
                 <td hidden><?php echo $bookRow['book_img_dir']?></td>
+                <td hidden><?php echo $bookRow['book_id']?></td>
                 <td><button type="button" data-toggle="modal" data-target="#showBook" class="btn-md btn-danger displaybtn"><i class="fas fa-eye"></i></button></td>
             </tr>
             <?php }?>
@@ -61,17 +73,18 @@ if (isset($_POST['searchBook']) && $_POST['searchBook'] !== '') {
         </table>
 </div>
 <div class="modal fade" id="showBook">
+    <form action="index.php?search_book" method="POST">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Choose a book</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body" id="displaybook">
                 <div class="row">
                     <div class="col">
                         <span>Book title:</span><p id="title">Choose a book</p>
@@ -86,15 +99,49 @@ if (isset($_POST['searchBook']) && $_POST['searchBook'] !== '') {
                     </div>
                 </div>
             </div>
+            <div class="modal-body" id="Reservation">
+                <div class="form-group row">
+                    <label for="datepicker" class="col-sm-4">Date of receipt</label>
+                    <div class="col-sm-4">
+                        <input type="date" name="date" class="form-control col-sm" id="datapicker" placeholder="Select a Date" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputNotes" class="col-sm-4 col-form-label">Aditionals notes</label>
+                    <div class="col-sm">
+                    <textarea name="notes" class="form-control" id="inputNotes" rows="5" ></textarea>
+                    </div>
+                </div>
+                <input type="hidden" value="" id="book" name="bookId">
+            </div>
 
+            <div class="modal-body" id="CheckReserv">
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Likes</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Sprawdź dostępność</button>
-                <button type="button" class="btn btn-danger">Rezerwuj</button>
+                <button type="button" id="checkReservations" class="btn btn-primary">Sprawdź dostępność</button>
+                <button type="button" id="reserved" class="btn btn-danger">Rezerwuj</button>
+                <button type="submit" name="reservationSubmit" value="Reserved" id="ConfirmReservation" class="btn btn-danger">Rezerwuj teraz</button>
             </div>
+
         </div>
     </div>
+    </form>
 </div>
+
 <script>
 $(document).ready(function () {
     $('.displaybtn').on('click', function() {
@@ -113,6 +160,40 @@ $(document).ready(function () {
         $("#type").html(data[2]);
         $("#img").attr("alt",data[6])
         $("#img").attr("src",data[7])
+        $("#book").val(data[8])
     });
 });
+</script>
+<script>
+$(document).ready(function () {
+    $('#reserved').on('click', function() {
+        $('#displaybook').toggleClass('unactive');
+        $('#Reservation').toggleClass('active');
+        $('#reserved').hide();
+        $('#ConfirmReservation').toggleClass('active');
+        $('#checkReservations').toggleClass('active');
+    });
+    $('#checkReservations').on('click', function() {
+        $('#CheckReserv').toggleClass('active');
+        $('#Reservation').toogleClass('active');
+    });
+
+    $('#close').on('click', function() {
+        $('#reserved').show();
+        $('#ConfirmReservation').removeClass('active');
+        $('#displaybook').removeClass('unactive');
+        $('#Reservation').removeClass('active');
+        $('#CheckReserv').removeClass('active');
+        $('#checkReservations').removeClass('active');
+    });
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
 </script>

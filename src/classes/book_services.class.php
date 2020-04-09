@@ -38,5 +38,23 @@ class BookServices {
             array_push($errors, "No file was uploaded!");
         }
     }
+    public function reservBook($bookId, $date, $notes) {
+        global $errors;
+        try {
+            $user = $_SESSION['user_session'];
+            $dateTo = date("Y-m-d", strtotime($date.'+ 30 days'));
+            $sql = "INSERT INTO reservations (`book_id`, `user_id`, `reservation_from`, `reservation_to`, `notes`) VALUES (:book, :user, :from, :to, :note)";
+            $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":book", $bookId);
+            $query -> bindParam(":user", $user);
+            $query -> bindParam(":from", $date);
+            $query -> bindParam(":to", $dateTo);
+            $query -> bindParam(":note", $notes);
+            $query -> execute();
+            array_push($errors, "Reservation has been done");
+            } catch (PDOException $e) {
+                array_push($errors, $e->getMessage());
+            }
+    }
 }
 ?>

@@ -170,6 +170,33 @@ body {
 #userRow.active {
   background: #0275d8 !important;
 }
+#displaybook.unactive {
+  display: none !important;
+}
+#ConfirmReservation {
+  display: none !important;
+}
+#ConfirmReservation.active {
+  display: block !important;
+}
+#Reservation {
+  display: none;
+}
+#CheckReserv {
+  display: none;
+}
+#CheckReserv.active {
+  display: block;
+}
+#checkReservations {
+  display: none;
+}
+#checkReservations.active {
+  display: block !important;
+}
+#Reservation.active {
+  display: block !important;
+}
 input[type=checkbox],
 input[type=radio] {
   -ms-transform: scale(1.5); /* IE */
