@@ -5,12 +5,6 @@ session_start();
 //errors handler
 $errors = [];
 
-// DB access parameters
-$db_access = [  'host' => 'localhost',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'library' ];
-
 //connect to DB
 require('db.inc.php');
 

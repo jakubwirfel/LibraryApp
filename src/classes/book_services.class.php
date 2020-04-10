@@ -43,7 +43,7 @@ class BookServices {
         try {
             $user = $_SESSION['user_session'];
             $dateTo = date("Y-m-d", strtotime($date.'+ 30 days'));
-            $sql = "INSERT INTO reservations (`book_id`, `user_id`, `reservation_from`, `reservation_to`, `notes`) VALUES (:book, :user, :from, :to, :note)";
+            $sql = "INSERT INTO reservations (`reservation_book_id`, `user_id`, `reservation_from`, `reservation_to`, `notes`) VALUES (:book, :user, :from, :to, :note)";
             $query = $this -> db -> prepare($sql);
             $query -> bindParam(":book", $bookId);
             $query -> bindParam(":user", $user);

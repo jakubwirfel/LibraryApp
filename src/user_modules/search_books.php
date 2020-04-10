@@ -72,6 +72,7 @@ if (isset($_POST['reservationSubmit']) && $_POST['reservationSubmit'] == 'Reserv
             </tbody>
         </table>
 </div>
+<!-- -------------MODAL BOOK PREWIEV---------------->
 <div class="modal fade" id="showBook">
     <form action="index.php?search_book" method="POST">
     <div class="modal-dialog modal-lg">
@@ -83,56 +84,54 @@ if (isset($_POST['reservationSubmit']) && $_POST['reservationSubmit'] == 'Reserv
                 <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
             </div>
 
-            <!-- Modal body -->
-            <div class="modal-body" id="displaybook">
-                <div class="row">
-                    <div class="col">
-                        <span>Book title:</span><p id="title">Choose a book</p>
-                        <span >Author:</span><p id="author">Choose a book</p>
-                        <span >Publishing year:</span><p id="year">Choose a book</p>
-                        <span >Description:</span><p id="description">Choose a book</p>
-                        <span >Type:</span><p id="type">Choose a book</p>
-                        <span >Number of pages:</span><p id="pages">Choose a book</p>
-                    </div>
-                    <div class="col">
-                        <img id="img" src="Choose a book" alt="Choose a book" width="100%" height="100%">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-body" id="Reservation">
-                <div class="form-group row">
-                    <label for="datepicker" class="col-sm-4">Date of receipt</label>
-                    <div class="col-sm-4">
-                        <input type="date" name="date" class="form-control col-sm" id="datapicker" placeholder="Select a Date" required>
+                <!-- -------------MODAL BOOK VIEW---------------->
+                <div class="modal-body" id="displaybook">
+                    <div class="row">
+                        <div class="col">
+                            <span>Book title:</span><p id="title">Choose a book</p>
+                            <span >Author:</span><p id="author">Choose a book</p>
+                            <span >Publishing year:</span><p id="year">Choose a book</p>
+                            <span >Description:</span><p id="description">Choose a book</p>
+                            <span >Type:</span><p id="type">Choose a book</p>
+                            <span >Number of pages:</span><p id="pages">Choose a book</p>
+                        </div>
+                        <div class="col">
+                            <img id="img" src="Choose a book" alt="Choose a book" width="100%" height="100%">
+                        </div>
+                        <input type="hidden" value="" id="book" name="bookId">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="inputNotes" class="col-sm-4 col-form-label">Aditionals notes</label>
-                    <div class="col-sm">
-                    <textarea name="notes" class="form-control" id="inputNotes" rows="5" ></textarea>
+                <!-- -------------MODAL BOOK RESERVATION---------------->
+                <div class="modal-body" id="Reservation">
+                    <div class="form-group row">
+                        <label for="datepicker" class="col-sm-4">Date of receipt</label>
+                        <div class="col-sm-4">
+                            <input type="date" name="date" class="form-control col-sm" id="datapicker" placeholder="Select a Date" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputNotes" class="col-sm-4 col-form-label">Aditionals notes</label>
+                        <div class="col-sm">
+                        <textarea name="notes" class="form-control" id="inputNotes" rows="5" ></textarea>
+                        </div>
                     </div>
                 </div>
-                <input type="hidden" value="" id="book" name="bookId">
-            </div>
-
-            <div class="modal-body" id="CheckReserv">
-            <table class="table table-dark table-hover">
-                <thead>
-                <tr class="text-center">
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Likes</th>
-                    <th>Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-            </div>
+                <!-- -------------MODAL CHECK RESERVATIONS---------------->
+                <div class="modal-body" id="CheckReserv">
+                <table class="table table-dark table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Reservation ID</th>
+                        <th>Reserved From</th>
+                        <th>Reserved To</th>
+                    </tr>
+                    </thead>
+                    <tbody id="table_check"></tbody>
+                </table>
+                </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" id="checkReservations" class="btn btn-primary">Sprawdź dostępność</button>
+                <button type="button" id="checkReservations" class="btn btn-primary" >Sprawdź dostępność</button>
                 <button type="button" id="reserved" class="btn btn-danger">Rezerwuj</button>
                 <button type="submit" name="reservationSubmit" value="Reserved" id="ConfirmReservation" class="btn btn-danger">Rezerwuj teraz</button>
             </div>
@@ -141,59 +140,15 @@ if (isset($_POST['reservationSubmit']) && $_POST['reservationSubmit'] == 'Reserv
     </div>
     </form>
 </div>
-
 <script>
-$(document).ready(function () {
-    $('.displaybtn').on('click', function() {
-        $tr = $(this).closest('tr');
-
-        var data = $tr.children("td").map(function() {
-            return $(this).text();
-        }).get();
-
-        $(".modal-title").html(data[0]);
-        $("#title").html(data[0]);
-        $("#author").html(data[1]);
-        $("#year").html(data[4]);
-        $("#description").html(data[5]);
-        $("#pages").html(data[3]);
-        $("#type").html(data[2]);
-        $("#img").attr("alt",data[6])
-        $("#img").attr("src",data[7])
-        $("#book").val(data[8])
-    });
-});
-</script>
-<script>
-$(document).ready(function () {
-    $('#reserved').on('click', function() {
-        $('#displaybook').toggleClass('unactive');
-        $('#Reservation').toggleClass('active');
-        $('#reserved').hide();
-        $('#ConfirmReservation').toggleClass('active');
-        $('#checkReservations').toggleClass('active');
-    });
-    $('#checkReservations').on('click', function() {
-        $('#CheckReserv').toggleClass('active');
-        $('#Reservation').toogleClass('active');
-    });
-
-    $('#close').on('click', function() {
-        $('#reserved').show();
-        $('#ConfirmReservation').removeClass('active');
-        $('#displaybook').removeClass('unactive');
-        $('#Reservation').removeClass('active');
-        $('#CheckReserv').removeClass('active');
-        $('#checkReservations').removeClass('active');
-    });
-});
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#datepicker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true
+    $(document).ready(function() {
+        $('#checkReservations').on('click', function() {
+            var bookId = $('#book').val();
+            $("#table_check").load("./src/ajax/check_reservation.php", {
+                book_Id: bookId
+            });
         });
     });
 </script>
+<script src="./public/js/bookDataCapture.js"></script>
+<script src="./public/js/bookPrewievToogle.js"></script>

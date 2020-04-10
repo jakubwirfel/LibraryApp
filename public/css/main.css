@@ -146,6 +146,9 @@ body {
 .table {
   background: #0275d8 !important;
 }
+.reservation_row:first-child {
+  background: #d9534f !important;
+}
 /*--------ACTIVATED ELEMENTS-------------*/
 #panel.active {
   right: 0;
