@@ -56,7 +56,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
     <div class="form-group row">
         <label for="datepicker" class="col-sm-4">Date of publishing</label>
         <div class="col-sm-4">
-            <input type="text" name="date" class="form-control col-sm-4" id="datepicker" placeholder="Select a Date" readonly>
+            <input type="date" name="date" class="form-control col-sm-4" placeholder="Select a Date" >
         </div>
     </div>
     <div class="form-group row">

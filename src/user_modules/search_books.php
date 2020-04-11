@@ -1,5 +1,4 @@
 <?php
-$postServices = new PostServices($database);
 if (isset($_POST['searchBook']) && $_POST['searchBook'] !== '') {
     try {
         $searchBook =  '%' . $_POST['searchBook'] . '%';

@@ -38,6 +38,7 @@ class BookServices {
             array_push($errors, "No file was uploaded!");
         }
     }
+
     public function reservBook($bookId, $date, $notes) {
         global $errors;
         try {
@@ -55,6 +56,18 @@ class BookServices {
             } catch (PDOException $e) {
                 array_push($errors, $e->getMessage());
             }
+    }
+
+     public function deleteBook($bookId, $imgPath) {
+        try {
+            $sql = "DELETE FROM books WHERE book_id = :bookId";
+            $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":bookId", $bookId);
+            $query -> execute();
+            unlink($imgPath);
+        } catch (PDOException $e) {
+            array_push($errors, $e->getMessage());
+        }
     }
 }
 ?>
