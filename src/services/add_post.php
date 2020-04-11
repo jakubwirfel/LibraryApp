@@ -10,9 +10,9 @@ if (isset($_POST['addPost']) && $_POST['addPost'] == 'AddPost' && isset($_FILES[
     $postServices ->  addPost($title, $header, $content, $footer, $image);
 }
 ?>
-<div>
+<div class="container-fluid content_container py-1 px-5">
     <h6 class="display-4 my-3">Add post</h6>
-    <form action="index.php?admin_panel&panel=add_post" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="inputTitle" class="col-sm-4 col-form-label">Tytuł</label>
         <div class="col-sm-8">

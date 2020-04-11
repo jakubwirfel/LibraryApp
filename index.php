@@ -71,6 +71,18 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         if(isset($_GET['book_rented'])) {
             include_once './src/modules/book_rented.php';
         }
+        if(isset($_GET['send_notification'])) {
+            include_once './src/services/create_notification.php';
+        }
+        if(isset($_GET['add_user'])) {
+            include_once './src/services/add_user.php';
+        }
+        if(isset($_GET['add_post'])) {
+            include_once './src/services/add_post.php';
+        }
+        if(isset($_GET['delete_post'])) {
+            include_once './src/services/delete_post.php';
+        }
         // -----------USER MODULES-------------
         if(isset($_GET['search_book'])) {
             include_once './src/user_modules/search_books.php';

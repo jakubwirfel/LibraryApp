@@ -74,12 +74,6 @@ switch ($returned['group']) {
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
-                <a href="index.php" class="nav-link text-dark font-italic bg-light">
-                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                    Strona główna
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="index.php?search_book" class="nav-link text-dark font-italic">
                     <i class="fa fa-search mr-3 text-primary fa-fw"></i>
                     Wyszukiwanie książek
@@ -139,12 +133,6 @@ switch ($returned['group']) {
         </ul>
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
         <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-                <a href="index.php" class="nav-link text-dark font-italic bg-light">
-                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                    Strona główna
-                </a>
-            </li>
             <li class="nav-item ">
                 <a href="index.php?book_rented" class="nav-link text-dark font-italic">
                     <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
@@ -158,7 +146,7 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?send_notification" class="nav-link text-dark font-italic">
                     <i class="fa fa-paper-plane mr-3 text-primary fa-fw"></i>
                     Wyślij komunikat
                 </a>
@@ -176,15 +164,21 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?add_user" class="nav-link text-dark font-italic">
                     <i class="fa fa-user-plus  mr-3 text-primary fa-fw"></i>
                     Dodaj użytkownika
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?add_post" class="nav-link text-dark font-italic">
                     <i class="fa fa-plus-circle mr-3 text-primary fa-fw"></i>
                     Dodaj post
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="index.php?delete_post" class="nav-link text-dark font-italic">
+                    <i class="fa fa-minus-circle mr-3 text-primary fa-fw"></i>
+                    Delete post
                 </a>
             </li>
         </ul>
@@ -230,34 +224,16 @@ switch ($returned['group']) {
 
         <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Zarządzanie</p>
         <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-                <a href="index.php" class="nav-link text-dark font-italic bg-light">
-                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                    Strona główna
-                </a>
-            </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?book_rented" class="nav-link text-dark font-italic">
                     <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
                     Zarządzaj wypożyczonymi
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?book_reservations" class="nav-link text-dark font-italic">
                     <i class="fa fa-bookmark mr-3 text-primary fa-fw"></i>
                     Zarządzaj rezerwacjami
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-paper-plane mr-3 text-primary fa-fw"></i>
-                    Wyślij komunikat
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-plus-circle mr-3 text-primary fa-fw"></i>
-                    Dodaj post
                 </a>
             </li>
             <li class="nav-item ">

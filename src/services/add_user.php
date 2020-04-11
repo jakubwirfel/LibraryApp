@@ -31,9 +31,9 @@ if (isset($_POST['add_user'])) {
 
 }
 ?>
+<div class="container-fluid content_container py-1 px-5">
 <h6 class="display-4 my-3">Add user</h6>
-<div id="add_user">
-    <form action="index.php?admin_panel&panel=add_user" method="POST">
+    <form action="" method="POST">
     <div class="form-group row">
         <label for="inputUsername" class="col-sm-4 col-form-label">Nazwa użytkownika</label>
         <div class="col-sm-8">

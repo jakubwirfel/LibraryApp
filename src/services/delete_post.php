@@ -36,9 +36,9 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
     }
 }
 ?>
-<div>
+<div class="container-fluid content_container py-1 px-5">
 <h6 class="display-4 my-3">Select post for deletion</h6>
-<form action="index.php?admin_panel&panel=delete_post" method="POST">
+<form action="" method="POST">
     <div class="input-group md-form form-sm form-1 pl-0 pb-3">
         <div class="input-group-prepend">
             <span class="input-group-text bg-primary lighten-2" id="basic-text1"><i class="fas fa-search text-white"
@@ -47,7 +47,7 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
         <input class="form-control my-0 py-1" name="searchPost" type="text" placeholder="Search by title" aria-label="Search" value ="<?php if(isset($_POST['searchPost'])) { echo $_POST['searchPost'];} else {echo '';}?>">
     </div>
 </form>
-<form action="index.php?admin_panel&panel=delete_post" method="POST">
+<form action="" method="POST">
     <table class="table table-dark table-hover">
         <thead>
         <tr class="text-center">

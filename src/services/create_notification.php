@@ -2,7 +2,7 @@
 if (isset($_POST['searchUser']) && $_POST['searchUser'] !== '') {
     try {
         $searchUser =  '%' . $_POST['searchUser'] . '%';
-        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_name LIKE :user_name";
+        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_name LIKE :user_name AND  user_id != :userId";
         $query = $database -> prepare($sql);
         $query -> bindParam(":user_name", $searchUser);
         $query -> bindParam(":userId", $_SESSION['user_session']);
@@ -20,20 +20,10 @@ if (isset($_POST['searchUser']) && $_POST['searchUser'] !== '') {
         array_push($errors, $e->getMessage());
     }
 }
-if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
-    try {
-        $sql = "SELECT * FROM users INNER JOIN groups on users.group = groups.id WHERE user_id != :userId";
-        $query = $database -> prepare($sql);
-        $query -> bindParam(":userId", $_SESSION['user_session']);
-        $query->execute();
-    } catch (PDOException $e) {
-        array_push($errors, $e->getMessage());
-    }
-}
 ?>
-<div>
+<div class="container-fluid content_container py-1 px-5">
 <h6 class="display-4 my-3">Select user for this massage</h6>
-<form action="index.php?admin_panel&panel=create_notification" method="POST">
+<form action="" method="POST">
     <div class="input-group md-form form-sm form-1 pl-0 pb-3">
         <div class="input-group-prepend">
             <span class="input-group-text bg-primary lighten-2" id="basic-text1"><i class="fas fa-search text-white"
@@ -42,7 +32,7 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
         <input class="form-control my-0 py-1" name="searchUser" type="text" placeholder="Search by username" aria-label="Search" value ="<?php if(isset($_POST['searchUser'])) { echo $_POST['searchUser'];} else {echo '';}?>">
     </div>
 </form>
-<form action="index.php?admin_panel&panel=create_notification" method="POST">
+<form action="" method="POST">
     <table class="table table-dark table-hover">
         <thead>
         <tr class="text-center">
@@ -70,9 +60,6 @@ if(isset($_POST['refresh']) && $_POST['refresh'] == 'Refresh') {
     <div class="form-group row">
         <div class="col-sm-11">
 
-        </div>
-        <div class="col-sm-1">
-        <button type="submit" name="refresh" value="Refresh" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
         </div>
     </div>
 </form>
