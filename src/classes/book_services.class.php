@@ -44,7 +44,7 @@ class BookServices {
         try {
             $user = $_SESSION['user_session'];
             $dateTo = date("Y-m-d", strtotime($date.'+ 30 days'));
-            $sql = "INSERT INTO reservations (`reservation_book_id`, `user_id`, `reservation_from`, `reservation_to`, `notes`) VALUES (:book, :user, :from, :to, :note)";
+            $sql = "INSERT INTO reservations (`reservation_book_id`, `reservation_user_id`, `reservation_from`, `reservation_to`, `notes`) VALUES (:book, :user, :from, :to, :note)";
             $query = $this -> db -> prepare($sql);
             $query -> bindParam(":book", $bookId);
             $query -> bindParam(":user", $user);
@@ -69,5 +69,43 @@ class BookServices {
             array_push($errors, $e->getMessage());
         }
     }
+
+    public function rentBook($bookId, $userId) {
+        try {
+            $date = date("Y-m-d");
+            $dateTo = date("Y-m-d", strtotime($date.'+ 30 days'));
+            $sql = "INSERT INTO rented (`rented_book_id`, `rented_user_id`, `rented_from`, `rented_to`) VALUES (:book, :user, :from, :to)";
+            $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":book", $bookId);
+            $query -> bindParam(":user", $userId);
+            $query -> bindParam(":from", $date);
+            $query -> bindParam(":to", $dateTo);
+            $query -> execute();
+        } catch (PDOException $e) {
+            array_push($errors, $e->getMessage());
+        }
+    }
+
+    public function deleteReservation($resId) {
+        try {
+            $sql = "DELETE FROM reservations WHERE reservation_id = :resId";
+            $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":resId", $resId);
+            $query -> execute();
+        } catch (PDOException $e) {
+            array_push($errors, $e->getMessage());
+        }
+    }
+    public function deleteRented($rentedId) {
+        try {
+            $sql = "DELETE FROM rented WHERE rented_id = :rentedId";
+            $query = $this -> db -> prepare($sql);
+            $query -> bindParam(":rentedId", $rentedId);
+            $query -> execute();
+        } catch (PDOException $e) {
+            array_push($errors, $e->getMessage());
+        }
+    }
 }
 ?>
+

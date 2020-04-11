@@ -65,6 +65,12 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         if(isset($_GET['book_delete'])) {
             include_once './src/modules/book_delete.php';
         }
+        if(isset($_GET['book_reservations'])) {
+            include_once './src/modules/book_reservations.php';
+        }
+        if(isset($_GET['book_rented'])) {
+            include_once './src/modules/book_rented.php';
+        }
         // -----------USER MODULES-------------
         if(isset($_GET['search_book'])) {
             include_once './src/user_modules/search_books.php';

@@ -146,13 +146,13 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?book_rented" class="nav-link text-dark font-italic">
                     <i class="fa fa-book-open mr-3 text-primary fa-fw"></i>
                     Zarządzaj wypożyczonymi
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?book_reservations" class="nav-link text-dark font-italic">
                     <i class="fa fa-bookmark mr-3 text-primary fa-fw"></i>
                     Zarządzaj rezerwacjami
                 </a>
