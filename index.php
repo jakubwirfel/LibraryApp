@@ -87,6 +87,15 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         if(isset($_GET['search_book'])) {
             include_once './src/user_modules/search_books.php';
         }
+        if(isset($_GET['user_informations'])) {
+            include_once './src/modules/user_info.php';
+        }
+        if(isset($_GET['contact_informations'])) {
+            include_once './src/modules/contact_info.php';
+        }
+        if(isset($_GET['notifications'])) {
+            include_once './src/modules/notifications.php';
+        }
         ?>
         <!-- Errors box -->
         <div class="center">

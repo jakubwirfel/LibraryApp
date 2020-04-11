@@ -2,7 +2,7 @@
 class PostServices {
     protected $db;
 
-    private $_suporttedFormats = ['image/png','imgae/jpeg','image/jpg','image/gif'];
+    private $_suporttedFormats = ['image/png','image/jpeg','image/jpg','image/gif'];
 
     public function __construct($database) {
         $this -> db = $database;

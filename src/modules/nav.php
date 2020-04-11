@@ -1,6 +1,6 @@
 <nav class="vertical-nav bg-white overflow-auto" id="sidebar">
         <div class="py-4 px-3 mb-2 bg-light">
-            <div class="media d-flex align-items-center"><img src="https://icons-for-free.com/iconfiles/png/512/bookshelf+library+icon-1320087270870761354.png" alt="logo" width="65" class="mr-3 rounded-circle img-thumbnail shadow">
+            <div class="media d-flex align-items-center"><img src="./public/assets/logo.png" alt="logo" width="65" class="mr-3 rounded-circle img-thumbnail shadow">
                 <div class="media-body">
                     <h4 class="m-0">Biblioteka Główna Toruń</h4>
                 </div>
@@ -26,7 +26,7 @@ switch ($returned['group']) {
 ?>
         <ul class="nav flex-column bg-white mb-3">
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_informations" class="nav-link text-dark font-italic">
                     <i class="fas fa-user mr-3 text-primary fa-fw"></i>
                     Informacje o użytkowniku
                 </a>
@@ -44,11 +44,11 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?notifications" class="nav-link text-dark font-italic">
                     <i class="fas fa-exclamation-circle mr-3 text-primary fa-fw"></i>
                     Komunikaty
                     <!-- Notification badge -->
-                    <span class="badge badge-notify">1</span>
+                    <span id="badge" class="badge badge-notify"></span>
                     <!-- End Notification badge -->
                 </a>
             </li>
@@ -59,7 +59,7 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?contact_informations" class="nav-link text-dark font-italic">
                     <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
                     Kontakt
                 </a>
@@ -104,22 +104,22 @@ switch ($returned['group']) {
 ?>
         <ul class="nav flex-column bg-white mb-3">
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_informations" class="nav-link text-dark font-italic">
                     <i class="fas fa-user mr-3 text-primary fa-fw"></i>
                     Informacje o użytkowniku
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?notifications" class="nav-link text-dark font-italic">
                     <i class="fas fa-exclamation-circle mr-3 text-primary fa-fw"></i>
                     Komunikaty
                     <!-- Notification badge -->
-                    <span class="badge badge-notify">1</span>
+                    <span id="badge" class="badge badge-notify"></span>
                     <!-- End Notification badge -->
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?contact_informations" class="nav-link text-dark font-italic">
                     <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
                     Kontakt
                 </a>
@@ -194,22 +194,22 @@ switch ($returned['group']) {
 ?>
         <ul class="nav flex-column bg-white mb-3">
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_informations" class="nav-link text-dark font-italic">
                     <i class="fas fa-user mr-3 text-primary fa-fw"></i>
                     Informacje o użytkowniku
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?notifications" class="nav-link text-dark font-italic">
                     <i class="fas fa-exclamation-circle mr-3 text-primary fa-fw"></i>
                     Komunikaty
                     <!-- Notification badge -->
-                    <span class="badge badge-notify">1</span>
+                    <span id="badge" class="badge badge-notify"></span>
                     <!-- End Notification badge -->
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?contact_informations" class="nav-link text-dark font-italic">
                     <i class="fa fa-phone-alt mr-3 text-primary fa-fw"></i>
                     Kontakt
                 </a>
@@ -253,6 +253,21 @@ switch ($returned['group']) {
     array_push($errors, "Proszę skontaktować się z administracją, brak uprawnień do funkcji apliakcji");
 }
 ?>
+<input type="hidden" id="userId" value="<?php echo $_SESSION['user_session']?>">
+<input type="hidden" id="groupId" value="<?php echo $returned['group']?>">
 </nav>
 <button id="menu-toggle" class="btn">Toggle Menu <i class="fa fa-
 filter"></i></button>
+<script>
+function loadDoc() {
+    setInterval(function(){
+        var userId = $('#userId').val();
+        var groupId = $('#groupId').val();
+            $("#badge").load("./src/ajax/badge_notify.php", {
+                user: userId,
+                group: groupId
+            });
+    },1000);
+ }
+ loadDoc();
+</script>
