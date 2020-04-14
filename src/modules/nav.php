@@ -32,13 +32,13 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_rented" class="nav-link text-dark font-italic">
                     <i class="fas fa-book-open mr-3 text-primary fa-fw"></i>
                     Wypożyczenia
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_reservations" class="nav-link text-dark font-italic">
                     <i class="fas fa-bookmark mr-3 text-primary fa-fw"></i>
                     Rezerwacje
                 </a>
@@ -83,12 +83,6 @@ switch ($returned['group']) {
                 <a href="#" class="nav-link text-dark font-italic">
                     <i class="fa fa-newspaper mr-3 text-primary fa-fw"></i>
                     Co nowego?
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-dark font-italic">
-                    <i class="fa fa-book mr-3 text-primary fa-fw"></i>
-                    Wybrane dla Ciebie
                 </a>
             </li>
         </ul>

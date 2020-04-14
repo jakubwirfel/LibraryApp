@@ -96,6 +96,13 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         if(isset($_GET['notifications'])) {
             include_once './src/modules/notifications.php';
         }
+        if(isset($_GET['user_reservations'])) {
+            include_once './src/user_modules/user_reservations.php';
+        }
+        if(isset($_GET['user_rented'])) {
+            include_once './src/user_modules/user_rented.php';
+        }
+
         ?>
         <!-- Errors box -->
         <div class="center">

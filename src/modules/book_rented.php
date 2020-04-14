@@ -52,6 +52,7 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                 <th>Reserving</th>
                 <th>From</th>
                 <th>To</th>
+                <th>Surcharge</th>
                 <th>Give back</th>
             </tr>
             </thead>
@@ -64,6 +65,16 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                 <td><?php echo $rentedRow['first_name'] . " " . $rentedRow['last_name']?></td>
                 <td><?php echo $rentedRow['rented_from']?></td>
                 <td><?php echo $rentedRow['rented_to']?></td>
+                <td>
+                    <?php
+                        $datetime1 = date_create($rentedRow['rented_to']);
+                        $datetime2 = date_create();
+                        $interval = date_diff($datetime1, $datetime2);
+                        if ($datetime1 <= $datetime2 ) {
+                        echo $interval->format('%R%d days');
+                        }
+                    ?>
+                </td>
                 <td><input type="radio" class="radio-btn" name="bookToBack" value="<?php echo $rentedRow['rented_id']?>" ></td>
                 <input type="hidden" name="title" value="<?php  echo $rentedRow['book_title']?>">
             </tr>

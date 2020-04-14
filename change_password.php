@@ -16,7 +16,7 @@ if (isset($_POST['change_password'])) {
     $new_user_password = trim($_POST['new_user_password']);
     $new_user_password_repet = trim($_POST['new_user_password_repet']);
     $user_pwd_change -> passwordValidation($new_user_password, $new_user_password_repet);
-    if ($accept_password == 1) {
+    if ($valid_password == 1) {
       $password_hashed = password_hash($new_user_password, PASSWORD_DEFAULT);
       $user_pwd_change -> change_password($password_hashed);
       $user->redirect('login.php');
