@@ -67,11 +67,11 @@ if(($returned['group'] != "1") && ($returned['permissions'] != "user = 1")) :
                 <td><?php echo $rentedRow['rented_to']?></td>
                 <td>
                     <?php
-                        $datetime1 = date_create($rentedRow['rented_to']);
-                        $datetime2 = date_create();
-                        $interval = date_diff($datetime1, $datetime2);
-                        if ($datetime1 <= $datetime2 ) {
-                        echo $interval->format('%R%d days');
+                        $datetime1 = date_create();
+                        $datetime2 = date_create($rentedRow['rented_to']);
+                        $interval = date_diff($datetime2, $datetime1);
+                        if ($datetime1 >= $datetime2 ) {
+                        echo $interval->format('%R%a days');
                         }
                     ?>
                 </td>

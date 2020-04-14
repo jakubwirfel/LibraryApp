@@ -29,12 +29,11 @@
                 <td><?php echo $rentedRow['rented_to']?></td>
                 <td>
                     <?php
-                        $today = date("Y-m-d");
-                        $datetime1 = date_create($today);
+                        $datetime1 = date_create();
                         $datetime2 = date_create($rentedRow['rented_to']);
-                        $interval = date_diff($datetime1, $datetime2);
+                        $interval = date_diff($datetime2, $datetime1);
                         if ($datetime1 >= $datetime2 ) {
-                        echo $interval->format('%R%d days');
+                        echo $interval->format('%R%a days');
                         }
                     ?>
                 </td>
