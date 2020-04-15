@@ -102,7 +102,12 @@ if (isset($_GET['logout']) && ($_GET['logout'] == 'true')) {
         if(isset($_GET['user_rented'])) {
             include_once './src/user_modules/user_rented.php';
         }
-
+        if(isset($_GET['user_help'])) {
+            include_once './src/user_modules/user_help.php';
+        }
+        if(isset($_GET['user_news'])) {
+            include_once './src/user_modules/user_news.php';
+        }
         ?>
         <!-- Errors box -->
         <div class="center">

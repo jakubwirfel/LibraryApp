@@ -53,7 +53,7 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_help" class="nav-link text-dark font-italic">
                     <i class="fa fa-question-circle mr-3 text-primary fa-fw"></i>
                     Pomoc
                 </a>
@@ -80,7 +80,7 @@ switch ($returned['group']) {
                 </a>
             </li>
             <li class="nav-item top-line">
-                <a href="#" class="nav-link text-dark font-italic">
+                <a href="index.php?user_news" class="nav-link text-dark font-italic">
                     <i class="fa fa-newspaper mr-3 text-primary fa-fw"></i>
                     Co nowego?
                 </a>
